@@ -10,10 +10,8 @@ __email__ = "jesse.gilmer@cuanschutz.edu"
 __status__ = "preprinted"
 
 from . import helper_functions as helpers
-def run_simulation(nReachSets=6):
+def run_simulation(folderNameSchema, nReachSets=6):
     # user defined properties:
-    folderNameSchema = "Test Reaches/reachset_"
-    nReachSets = 6
 
     for i in range(nReachSets-1): #python is 0-indexed
         reach_loc = folderNameSchema + str(i+1)
