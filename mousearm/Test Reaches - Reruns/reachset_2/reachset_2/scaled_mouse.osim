@@ -1,0 +1,2203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="40000">
+	<Model name="subject01">
+		<!--List of components that this component owns and serializes.-->
+		<components>
+			<PathPoint name="StartPoint">
+				<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+				<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+				<!--The fixed location of the path point expressed in its parent frame.-->
+				<location>0.017442166847937 0 0.01526189675339564</location>
+			</PathPoint>
+			<PathPoint name="EndPoint">
+				<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+				<socket_parent_frame>/bodyset/clavicle</socket_parent_frame>
+				<!--The fixed location of the path point expressed in its parent frame.-->
+				<location>0 0 0</location>
+			</PathPoint>
+		</components>
+		<!--The model's ground reference frame.-->
+		<Ground name="ground">
+			<!--The geometry used to display the axes of this Frame.-->
+			<FrameGeometry name="frame_geometry">
+				<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+				<socket_frame>..</socket_frame>
+				<!--Scale factors in X, Y, Z directions respectively.-->
+				<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+				<!--Default appearance attributes for this Geometry-->
+				<Appearance>
+					<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+					<visible>true</visible>
+				</Appearance>
+			</FrameGeometry>
+		</Ground>
+		<!--List of bodies that make up this model.-->
+		<BodySet name="bodyset">
+			<objects>
+				<Body name="scapula">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="scapula_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>2.1802707524348213 2.1802707524348213 2.1802707524348213</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bones_Scapula.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--The mass of the body (kg)-->
+					<mass>0.0031092279429985712</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>-0.004295133598995333 0.001539271196410579 -0.0018074445104285259</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>2.4633274642567385e-05 4.9266549285134779e-06 2.4633274642567385e-05 0 0 0</inertia>
+				</Body>
+				<Body name="humerus">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="humerus_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>2.1802707524348213 2.1802707524348213 2.1802707524348213</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bone_Segmentation_Humerus.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--Set of wrap objects fixed to this body that GeometryPaths can wrap over.This property used to be a member of Body but was moved up with the introduction of Frames.-->
+					<WrapObjectSet name="wrapobjectset">
+						<objects>
+							<WrapCylinder name="shoulder_wrap">
+								<!--Whether or not the WrapObject is considered active in computing paths-->
+								<active>true</active>
+								<!--Body-fixed Euler angle sequence for the orientation of the WrapObject-->
+								<xyz_body_rotation>1.0479297637939453 -1.4901161193847656e-08 0</xyz_body_rotation>
+								<!--Translation of the WrapObject.-->
+								<translation>0.018416155693477893 0.0031990637404192678 0.026550110931939173</translation>
+								<!--The name of quadrant over which the wrap object is active. For example, '+x' or '-y' to set the sidedness of the wrapping.-->
+								<quadrant>all</quadrant>
+								<!--Default appearance for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>false</visible>
+									<!--The opacity used to display the geometry between 0:transparent, 1:opaque.-->
+									<opacity>0.5</opacity>
+									<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+									<color>0 1 1</color>
+									<!--Visuals applied to surfaces associated with this Appearance.-->
+									<SurfaceProperties>
+										<!--The representation (1:Points, 2:Wire, 3:Shaded) used to display the object.-->
+										<representation>3</representation>
+									</SurfaceProperties>
+								</Appearance>
+								<!--The radius of the cylinder.-->
+								<radius>0.0013081625135952751</radius>
+								<!--The length of the cylinder.-->
+								<length>0.0054506769095145485</length>
+							</WrapCylinder>
+							<WrapCylinder name="elbow">
+								<!--Whether or not the WrapObject is considered active in computing paths-->
+								<active>true</active>
+								<!--Body-fixed Euler angle sequence for the orientation of the WrapObject-->
+								<xyz_body_rotation>1.0479297637939453 -1.4901161193847656e-08 0</xyz_body_rotation>
+								<!--Translation of the WrapObject.-->
+								<translation>0.007369288919726877 -0.00031149108237354104 0.019447102465422198</translation>
+								<!--The name of quadrant over which the wrap object is active. For example, '+x' or '-y' to set the sidedness of the wrapping.-->
+								<quadrant>all</quadrant>
+								<!--Default appearance for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>false</visible>
+									<!--The opacity used to display the geometry between 0:transparent, 1:opaque.-->
+									<opacity>0.5</opacity>
+									<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+									<color>0 1 1</color>
+									<!--Visuals applied to surfaces associated with this Appearance.-->
+									<SurfaceProperties>
+										<!--The representation (1:Points, 2:Wire, 3:Shaded) used to display the object.-->
+										<representation>3</representation>
+									</SurfaceProperties>
+								</Appearance>
+								<!--The radius of the cylinder.-->
+								<radius>0.0013081625135952751</radius>
+								<!--The length of the cylinder.-->
+								<length>0.0032704061570797273</length>
+							</WrapCylinder>
+						</objects>
+						<groups />
+					</WrapObjectSet>
+					<!--The mass of the body (kg)-->
+					<mass>0.0013048392465102115</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>0.014607813592971093 0.0010901354279960625 0.024222808740511206</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>2.4633274642567385e-05 4.9266549285134779e-06 2.4633274642567385e-05 0 0 0</inertia>
+				</Body>
+				<Body name="ulna">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="ulna_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>1.452340098489326 1.452340098489326 1.452340098489326</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bone_Segments_Ulna.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--The mass of the body (kg)-->
+					<mass>0.0021833681359135554</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>-0.00043570238839081365 0.001452341012844979 0.014378170954926092</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>3.2308116883470151e-06 6.4616233766940306e-07 3.2308116883470151e-06 0 0 0</inertia>
+				</Body>
+				<Body name="hand">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="hand_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>1.452340098489326 1.452340098489326 1.452340098489326</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bone_Segments_Hand.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--The mass of the body (kg)-->
+					<mass>0.00022240349326395405</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>-0.00697123280386454 0.0027594462336590605 0.01742808133336279</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>3.2308116883470151e-06 6.4616233766940306e-07 3.2308116883470151e-06 0 0 0</inertia>
+				</Body>
+				<Body name="radius">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="radius_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>1.452340098489326 1.452340098489326 1.452340098489326</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bone_Segments_Radius.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--The mass of the body (kg)-->
+					<mass>0.00016266701973468504</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>-0.00043570205024153375 0.0020332758963112108 0.014959104654869845</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>3.2308116883470151e-06 6.4616233766940306e-07 3.2308116883470151e-06 0 0 0</inertia>
+				</Body>
+				<Body name="clavicle">
+					<!--The geometry used to display the axes of this Frame.-->
+					<FrameGeometry name="frame_geometry">
+						<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+						<socket_frame>..</socket_frame>
+						<!--Scale factors in X, Y, Z directions respectively.-->
+						<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+						<!--Default appearance attributes for this Geometry-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+						</Appearance>
+					</FrameGeometry>
+					<!--List of geometry attached to this Frame. Note, the geometry are treated as fixed to the frame and they share the transform of the frame when visualized-->
+					<attached_geometry>
+						<Mesh name="clavicle_geom_1">
+							<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+							<socket_frame>..</socket_frame>
+							<!--Scale factors in X, Y, Z directions respectively.-->
+							<scale_factors>1 1 1</scale_factors>
+							<!--Default appearance attributes for this Geometry-->
+							<Appearance>
+								<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+								<visible>true</visible>
+							</Appearance>
+							<!--Name of geometry file.-->
+							<mesh_file>GeomJan01242023\Bone_Segmentation_Segment_8.stl</mesh_file>
+						</Mesh>
+					</attached_geometry>
+					<!--The mass of the body (kg)-->
+					<mass>3.5299999581184238e-05</mass>
+					<!--The location (Vec3) of the mass center in the body frame.-->
+					<mass_center>0 0 0</mass_center>
+					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+					<inertia>4.9999999999999998e-07 9.9999999999999995e-08 4.9999999999999998e-07 0 0 0</inertia>
+				</Body>
+			</objects>
+			<groups />
+		</BodySet>
+		<!--List of joints that connect the bodies.-->
+		<JointSet name="jointset">
+			<objects>
+				<WeldJoint name="ground_scapula">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>ground_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>scapula_offset</socket_child_frame>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="ground_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/ground</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0 0 0</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>0 2.6179938316345215 0.52359879016876221</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="scapula_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/scapula</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0 0 0</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>0 0 0</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+				</WeldJoint>
+				<CustomJoint name="shoulder">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>scapula_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>humerus_offset</socket_child_frame>
+					<!--List containing the generalized coordinates (q's) that parameterize this joint.-->
+					<coordinates>
+						<Coordinate name="elv_angle">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>1.76058343924414</default_value>
+							<!--The speed value of this coordinate before any value has been set. Rotational coordinate value is in rad/s and Translational in m/s.-->
+							<default_speed_value>0</default_speed_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-0.5 2.75</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be constrained to the current (e.g. default) value, above.-->
+							<locked>false</locked>
+							<!--If specified, the coordinate can be prescribed by a function of time. It can be any OpenSim Function with valid second order derivatives.-->
+							<prescribed_function />
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+						<Coordinate name="extension_angle">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>1.2654509262215889</default_value>
+							<!--The speed value of this coordinate before any value has been set. Rotational coordinate value is in rad/s and Translational in m/s.-->
+							<default_speed_value>0</default_speed_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-1.458063006401062 2.2000000476837158</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be constrained to the current (e.g. default) value, above.-->
+							<locked>false</locked>
+							<!--If specified, the coordinate can be prescribed by a function of time. It can be any OpenSim Function with valid second order derivatives.-->
+							<prescribed_function />
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+						<Coordinate name="rotation_angle">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>-0.67097438189775782</default_value>
+							<!--The speed value of this coordinate before any value has been set. Rotational coordinate value is in rad/s and Translational in m/s.-->
+							<default_speed_value>0</default_speed_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-1 0.5</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be constrained to the current (e.g. default) value, above.-->
+							<locked>false</locked>
+							<!--If specified, the coordinate can be prescribed by a function of time. It can be any OpenSim Function with valid second order derivatives.-->
+							<prescribed_function />
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+					</coordinates>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="scapula_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/scapula</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.018316226350286516 0.0030262118926346433 0.026969580149308562</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>-0.17453292012214661 -1.1344640254974365 -0.43631485104560852</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="humerus_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/humerus</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.018631623539274646 0.0023522677904222965 0.026368511190405345</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>0 -0.78536337614059448 0.1745329350233078</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+					<!--Defines how the child body moves with respect to the parent as a function of the generalized coordinates.-->
+					<SpatialTransform>
+						<!--3 Axes for rotations are listed first.-->
+						<TransformAxis name="rotation1">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates>elv_angle</coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0.00042999999999999999 0.00047400010000000001 0.99908918000000002</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<LinearFunction name="function">
+								<coefficients> 1 0</coefficients>
+							</LinearFunction>
+						</TransformAxis>
+						<TransformAxis name="rotation2">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates>extension_angle</coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>-0.00047999999999999996 0.99908918000000002 -0.00042400010000000004</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<LinearFunction name="function">
+								<coefficients> 1 0</coefficients>
+							</LinearFunction>
+						</TransformAxis>
+						<TransformAxis name="rotation3">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates>rotation_angle</coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0.99908918000000002 -0.00042400010000000004 -0.00047999999999999996</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<LinearFunction name="function">
+								<coefficients> 1 0</coefficients>
+							</LinearFunction>
+						</TransformAxis>
+						<!--3 Axes for translations are listed next.-->
+						<TransformAxis name="translation1">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>1 0 0</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>2.1802707524348213</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+						<TransformAxis name="translation2">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0 1 0</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>2.1802707524348213</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+						<TransformAxis name="translation3">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0 0 1</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>2.1802707524348213</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+					</SpatialTransform>
+				</CustomJoint>
+				<PinJoint name="humerus_ulna">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>humerus_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>ulna_offset</socket_child_frame>
+					<!--List containing the generalized coordinates (q's) that parameterize this joint.-->
+					<coordinates>
+						<Coordinate name="elbow_flex">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>0.59173641787824871</default_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-1 1.25</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+					</coordinates>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="humerus_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/humerus</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.0065956234363943869 0.00012419804662523143 0.019111801261192937</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>1.5707963705062866 0 0</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="ulna_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/ulna</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.004647488197760413 -0.00043570200797287371 0.012490125271182661</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>1.0471975803375244 0 0.61086529493331909</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+				</PinJoint>
+				<CustomJoint name="wrist">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>radius_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>hand_offset</socket_child_frame>
+					<!--List containing the generalized coordinates (q's) that parameterize this joint.-->
+					<coordinates>
+						<Coordinate name="wrist_angle">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>-0.22682299464918915</default_value>
+							<!--The speed value of this coordinate before any value has been set. Rotational coordinate value is in rad/s and Translational in m/s.-->
+							<default_speed_value>0</default_speed_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-0.22682300209999084 -0.22682300209999084</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be constrained to the current (e.g. default) value, above.-->
+							<locked>false</locked>
+							<!--If specified, the coordinate can be prescribed by a function of time. It can be any OpenSim Function with valid second order derivatives.-->
+							<prescribed_function />
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+					</coordinates>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="radius_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/radius</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>-0.0056630749243420184 0.001691812077009854 0.016539023304347485</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>-0.3490658700466156 0 0</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="hand_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/hand</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>-0.0056626738792960154 0.0016919762486090966 0.016539249188066481</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>-0.87266463041305542 0 0.34906584024429321</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+					<!--Defines how the child body moves with respect to the parent as a function of the generalized coordinates.-->
+					<SpatialTransform>
+						<!--3 Axes for rotations are listed first.-->
+						<TransformAxis name="rotation1">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates>wrist_angle</coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0.0047999999999999996 0.99908918000000002 0.042400010000000002</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<LinearFunction name="function">
+								<coefficients> 1 0</coefficients>
+							</LinearFunction>
+						</TransformAxis>
+						<TransformAxis name="rotation2">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0 1 0</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<Constant name="function">
+								<value>0</value>
+							</Constant>
+						</TransformAxis>
+						<TransformAxis name="rotation3">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0.042400010000000002 0 -0.0047999999999999996</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<Constant name="function">
+								<value>0</value>
+							</Constant>
+						</TransformAxis>
+						<!--3 Axes for translations are listed next.-->
+						<TransformAxis name="translation1">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>1 0 0</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>1.452340098489326</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+						<TransformAxis name="translation2">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0 1 0</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>1.452340098489326</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+						<TransformAxis name="translation3">
+							<!--Names of the coordinates that serve as the independent variables         of the transform function.-->
+							<coordinates></coordinates>
+							<!--Rotation or translation axis for the transform.-->
+							<axis>0 0 1</axis>
+							<!--Transform function of the generalized coordinates used to        represent the amount of displacement along a specified axis.-->
+							<MultiplierFunction name="function">
+								<function>
+									<Constant name="function">
+										<value>0</value>
+									</Constant>
+								</function>
+								<scale>1.452340098489326</scale>
+							</MultiplierFunction>
+						</TransformAxis>
+					</SpatialTransform>
+				</CustomJoint>
+				<PinJoint name="ulna_radius_pj">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>ulna_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>radius_offset</socket_child_frame>
+					<!--List containing the generalized coordinates (q's) that parameterize this joint.-->
+					<coordinates>
+						<Coordinate name="radius_rot">
+							<!--The value of this coordinate before any value has been set. Rotational coordinate value is in radians and Translational in meters.-->
+							<default_value>-0.16278685347455671</default_value>
+							<!--The minimum and maximum values that the coordinate can range between. Rotational coordinate range in radians and Translational in meters.-->
+							<range>-0.16279000043869019 -0.16278000175952911</range>
+							<!--Flag indicating whether or not the values of the coordinates should be limited to the range, above.-->
+							<clamped>true</clamped>
+							<!--Flag indicating whether or not the values of the coordinates should be constrained to the current (e.g. default) value, above.-->
+							<locked>false</locked>
+							<!--Flag indicating whether or not the values of the coordinates should be prescribed according to the function above. It is ignored if the no prescribed function is specified.-->
+							<prescribed>false</prescribed>
+						</Coordinate>
+					</coordinates>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="ulna_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/ulna</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.0043522898785283036 -0.00045156564375821152 0.013245710461730459</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>-0.52366858720779419 1.9198621511459351 0</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="radius_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/radius</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.0043570203333406976 0.00014523400618001291 0.013071060323723531</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>-0.52359879016876221 1.9198621511459351 0</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+				</PinJoint>
+				<WeldJoint name="ground_clavicle">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+					<socket_parent_frame>/jointset/shoulder/scapula_offset</socket_parent_frame>
+					<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+					<socket_child_frame>clavicle_offset</socket_child_frame>
+					<!--Physical offset frames owned by the Joint that are typically used to satisfy the owning Joint's parent and child frame connections (sockets). PhysicalOffsetFrames are often used to describe the fixed transformation from a Body's origin to another location of interest on the Body (e.g., the joint center). When the joint is deleted, so are the PhysicalOffsetFrame components in this list.-->
+					<frames>
+						<PhysicalOffsetFrame name="ground_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/ground</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0 0 0</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>3.4887409128714353e-05 0 0</orientation>
+						</PhysicalOffsetFrame>
+						<PhysicalOffsetFrame name="clavicle_offset">
+							<!--The geometry used to display the axes of this Frame.-->
+							<FrameGeometry name="frame_geometry">
+								<!--Path to a Component that satisfies the Socket 'frame' of type Frame.-->
+								<socket_frame>..</socket_frame>
+								<!--Scale factors in X, Y, Z directions respectively.-->
+								<scale_factors>0.20000000000000001 0.20000000000000001 0.20000000000000001</scale_factors>
+								<!--Default appearance attributes for this Geometry-->
+								<Appearance>
+									<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+									<visible>true</visible>
+								</Appearance>
+							</FrameGeometry>
+							<!--Path to a Component that satisfies the Socket 'parent' of type C (description: The parent frame to this frame.).-->
+							<socket_parent>/bodyset/clavicle</socket_parent>
+							<!--Translational offset (in meters) of this frame's origin from the parent frame's origin, expressed in the parent frame.-->
+							<translation>0.0088200271129608154 0.001459037302993238 0.011943689547479153</translation>
+							<!--Orientation offset (in radians) of this frame in its parent frame, expressed as a frame-fixed x-y-z rotation sequence.-->
+							<orientation>0.78539812564849854 -0.78539812564849854 0</orientation>
+						</PhysicalOffsetFrame>
+					</frames>
+				</WeldJoint>
+			</objects>
+			<groups />
+		</JointSet>
+		<!--Controllers that provide the control inputs for Actuators.-->
+		<ControllerSet name="controllerset">
+			<objects />
+			<groups />
+		</ControllerSet>
+		<!--Constraints in the model.-->
+		<ConstraintSet name="constraintset">
+			<objects />
+			<groups />
+		</ConstraintSet>
+		<!--Forces in the model (includes Actuators).-->
+		<ForceSet name="forceset">
+			<objects>
+				<DeGrooteFregly2016Muscle name="Pectoralis_Clavicle_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Pec_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012247172465085127 0.0026540576360457205 0.025730132533785123</location>
+								</PathPoint>
+								<PathPoint name="Pec_Midpoint_01">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/clavicle</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0096204031983922987 -0.00023840375530463642 0.012723852331350077</location>
+								</PathPoint>
+								<PathPoint name="Pec_Origin_Clav">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/clavicle</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.01132773405502796 -0.00095770109781589952 0.013171453162770685</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.032646998763084412</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.0086881763835305777</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.00031029201692276586</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.25</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>10</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Biceps_Long_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Biceps_Short_Head_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0029944653601572165 0.00014169192483029698 0.012820508979986763</location>
+								</PathPoint>
+								<PathPoint name="Biceps_Short_Head-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.011898708127378511 0.0021861038150642583 0.025102041951125087</location>
+								</PathPoint>
+								<PathPoint name="Biceps_Short_Head-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.018626252179415836 0.0037862090622709805 0.027811401810801089</location>
+								</PathPoint>
+								<PathPoint name="Biceps_Short_Head-P4">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.019892332525346994 0.0031700424311879348 0.026680971552367903</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="shoulder_wrap_BICs">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>shoulder_wrap</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+								<PathWrap name="elbow_wrap_BICs">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>elbow</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.017758000642061234</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.010634974442584858</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.0010634975185429259</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>100</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Smaller value means activation can increase more rapidly. Default: 0.015 seconds.-->
+					<activation_time_constant>0.014999999664723873</activation_time_constant>
+					<!--Smaller value means activation can decrease more rapidly. Default: 0.060 seconds.-->
+					<deactivation_time_constant>0.059999998658895493</deactivation_time_constant>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Biceps_Short_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Biceps_Long_Head-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0029887867171444933 7.0860338381682764e-05 0.012742788351597105</location>
+								</PathPoint>
+								<PathPoint name="Biceps_Long_Head-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.014267741788316511 0.0024270049898562833 0.026387716889122094</location>
+								</PathPoint>
+								<PathPoint name="Biceps_Long_Head-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.018523066174862414 0.0049907841456740473 0.026627693522799027</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="shoulder_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>shoulder_wrap</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+								<PathWrap name="elbow_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>elbow</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.093419000506401062</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.017961024905378691</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>4.2261231707166658e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>10</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Smaller value means activation can increase more rapidly. Default: 0.015 seconds.-->
+					<activation_time_constant>0.014999999664723873</activation_time_constant>
+					<!--Smaller value means activation can decrease more rapidly. Default: 0.060 seconds.-->
+					<deactivation_time_constant>0.5</deactivation_time_constant>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Deltoid_Medial_CHK_MMTARM">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Deltoid_A_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.011991487042879015 0.0026163250271905502 0.025073113701733294</location>
+								</PathPoint>
+								<PathPoint name="Deltoid_A-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/clavicle</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.008468184229890853 0.0013940765738899435 0.013247691563524316</location>
+								</PathPoint>
+								<PathPoint name="Deltoid_A_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/clavicle</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0093000000342726707 0.00050000002374872565 0.013299999758601189</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.068714998662471771</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.011209654241996896</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>3.7365513720856898e-06</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.20000000298023224</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Triceps_Lat_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Triceps_Short_Head_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0059247517724556904 -0.00064996336090629295 0.012125103622678208</location>
+								</PathPoint>
+								<PathPoint name="Triceps_Short_Head_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.018475708580323925 0.003535326199261282 0.02534095612031605</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.1251789927482605</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.015736810046822428</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.2481155947905631e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.16850000619888306</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Triceps_Long_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Triceps_Long_Head_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0060925359150755271 -0.00082842900527627995 0.011586063627655215</location>
+								</PathPoint>
+								<PathPoint name="Triceps_Long_Head-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.014740497499519343 0.0015606253924906617 0.020054585712549821</location>
+								</PathPoint>
+								<PathPoint name="Triceps_Long_Head_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.021280281008867752 0.0025598901741429063 0.025239964797264276</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.61247199773788452</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.017962983436514351</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.0015717609199971058</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.73000001907348633</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Scale factor for the width of the active force-length curve. Larger values make the curve wider. Default: 1.0.-->
+					<active_force_width_scale>1</active_force_width_scale>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Brachialis_Proximal_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="MaybeBrachialis_InnerHead-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0032985514652355162 8.5205830883361945e-05 0.01276666166428028</location>
+								</PathPoint>
+								<PathPoint name="MaybeBrachialis_InnerHead-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.010901356564312919 0.001526189472286027 0.021366655657807432</location>
+								</PathPoint>
+								<PathPoint name="MaybeBrachialis_InnerHead-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012645579340712729 0.00043605417119842502 0.02289285477513647</location>
+								</PathPoint>
+								<PathPoint name="MaybeBrachialis_InnerHead-P4">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.018134869788069285 0.00098447855425334635 0.026208060495092705</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="elbow_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>elbow</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.065999001264572144</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.014727475365614515</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.1039249341398267e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Brachialis_Distal_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="MaybeBrachialis_OuterrHead-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0036308501650674876 0.00043570205024153375 0.012925826560588315</location>
+								</PathPoint>
+								<PathPoint name="MaybeBrachialis_OuterrHead-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.010901353518509863 0.001526189472286027 0.021366653627272063</location>
+								</PathPoint>
+								<PathPoint name="MaybeBrachialis_OuterrHead-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.017960629498696225 0.0030360682588328075 0.025512054601655263</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="elbow_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>elbow</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.06712699681520462</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.014851341899002167</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.1216201522019939e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Anconeus">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Anconeus_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.011337406928257522 0.0010901354279960625 0.023328896001671907</location>
+								</PathPoint>
+								<PathPoint name="Anconeus-Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0034856157256337099 -0.00029046799122569585 0.012780596855244455</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="elbow_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>elbow</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.023302000015974045</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.0061942087004004352</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.00041294723267195802</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>10</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Use this property to define the linear damping force that is added to the total muscle fiber force. It is computed by multiplying this damping parameter by the normalized fiber velocity and the max isometric force. Default: 0.-->
+					<fiber_damping>0</fiber_damping>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Deltoid_Posterior">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>0.10000000149011612</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Deltoid_M_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012813915679254455 0.0032503900255074448 0.024833091820373205</location>
+								</PathPoint>
+								<PathPoint name="Deltoid_M_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.01895296057900038 0.002562224604876596 0.025244972519570214</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="shoulder_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>shoulder_wrap</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>axial</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.06770700216293335</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.0076309478690639821</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.180270746930168e-06</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.20000000298023224</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>10</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Short_Anconeus">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Short_Anconeus_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/ulna</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0055188924673181209 -0.00087140393140842747 0.012054422629179887</location>
+								</PathPoint>
+								<PathPoint name="Short_Anconeus_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0078489755892054928 -0.0019622436434844522 0.019840460601549138</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.019999999552965164</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.0031449703600675456</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.0966468831933966e-06</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Maximum contraction velocity of the fibers, in optimal fiberlengths/second-->
+					<max_contraction_velocity>100</max_contraction_velocity>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Subscapularis_SuperiorHead">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Subscapularis_SuperiorHead_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.017787926084081272 0.0013487898047131717 0.026917417798812477</location>
+								</PathPoint>
+								<PathPoint name="Subscapularis_SuperiorHead_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.028997602511603725 0.00087210827894261978 0.028125487569966922</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.34072199463844299</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.010901353518509868</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.00021802706973565508</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.20000000298023224</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Infraspinatus">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0.0099999997764825821</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Infraspinatus_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.018096246962558495 0.0034884338772212427 0.025945224582299357</location>
+								</PathPoint>
+								<PathPoint name="Infraspinatus_P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.019622433896675305 0.0039244877946027464 0.025727197877425525</location>
+								</PathPoint>
+								<PathPoint name="Infraspinatus_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.023110869296798078 0.0028343519858813021 0.025291140406607123</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--The wrap objects that are associated with this path-->
+						<PathWrapSet>
+							<objects>
+								<PathWrap name="shoulder_wrap">
+									<!--A WrapObject that this PathWrap interacts with.-->
+									<wrap_object>shoulder_wrap</wrap_object>
+									<!--The wrapping method used to solve the path around the wrap object.-->
+									<method>hybrid</method>
+									<!--The range of indices to use to compute the path over the wrap object.-->
+									<range>-1 -1</range>
+								</PathWrap>
+							</objects>
+							<groups />
+						</PathWrapSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--Flag indicating whether the associated Geometry is visible or hidden.-->
+							<visible>true</visible>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.065393000841140747</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.0065408123141594554</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.1802706973565497e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.20000000298023224</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="PronatorTeres">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="PronatorTeres-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0012715253184913617 0.0017214986610167165 0.014596238039334346</location>
+								</PathPoint>
+								<PathPoint name="PronatorTeres-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0077818109663519795 -0.0014601974743965057 0.020210613633148578</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.20000000298023224</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.01098706305690997</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>1.569580409209817e-10</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="FlexorCarpiRadialis">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="FlexorCarpiRadialis-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/hand</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>-0.005831956303753977 0.0022977868169422057 0.017047247461716847</location>
+								</PathPoint>
+								<PathPoint name="FlexorCarpiRadialis-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.00057367863768574643 0.0019935314214674046 0.014826129095355975</location>
+								</PathPoint>
+								<PathPoint name="FlexorCarpiRadialis-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0074672331692597609 -0.0020222243466609694 0.020121276507205334</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.20000000298023224</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.010487393519285518</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>1.4981990219526912e-11</tendon_slack_length>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Brachioradialis">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Brachioradialis-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>-0.0042521695845111592 0.0018389633812595256 0.016901202210603514</location>
+								</PathPoint>
+								<PathPoint name="Brachioradialis-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0087867982368188338 0.0014123906949355808 0.019753013784210269</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.20000000298023224</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.010746857230136643</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>1.5352652891436498e-07</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.10000000149011612</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Triceps_Medial_Head">
+					<!--Flag indicating whether the force is applied or not. If true the forceis applied to the MultibodySystem otherwise the force is not applied.NOTE: Prior to OpenSim 4.0, this behavior was controlled by the 'isDisabled' property, where 'true' meant that force was not being applied. Thus, if 'isDisabled' is true, then 'appliesForce` is false.-->
+					<appliesForce>true</appliesForce>
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Triceps_Lateral_Head_Origin">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.014216810791565612 0.00054475324043942253 0.023942150664409818</location>
+								</PathPoint>
+								<PathPoint name="Triceps_Lateral_Head-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.010634045234274829 -4.5765186320383594e-05 0.020795148105079288</location>
+								</PathPoint>
+								<PathPoint name="Triceps_Lateral_Head_Insertion">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.0055471785142589729 -0.00033932730791283184 0.012198897344840472</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.16010400652885437</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.008955502113496893</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>2.2388753654745968e-05</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.20000000298023224</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Latissimus_Dorsi_Rostral">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Latissimus_Dorsi-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.033476062850145323 -0.0015503208654882436 0.02805989717514756</location>
+								</PathPoint>
+								<PathPoint name="Latissimus_Dorsi-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.028134552398470642 0.0022402313380677432 0.023375744403382692</location>
+								</PathPoint>
+								<PathPoint name="Latissimus_Dorsi_Rostral-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012859237348736894 0.0032660455823715429 0.024558569947238321</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.13345499336719513</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.021802707037019732</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.001090135427996063</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.36000001430511475</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Latissimus_Dorsi_Caudal">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Latissimus_Dorsi_Caudal1-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012057493706478201 0.0036671493636608421 0.02507033494200319</location>
+								</PathPoint>
+								<PathPoint name="Latissimus_Dorsi_Caudal1-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.028051139402344348 0.00116591803087474 0.019769050874384034</location>
+								</PathPoint>
+								<PathPoint name="Latissimus_Dorsi_Caudal-P3">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.040425094329139891 -0.0064539319902253752 0.022635325722055292</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.13345499336719513</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.023982978146828777</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.010901353518509864</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.36000001430511475</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Pectoralis_Major_Anterior">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Pectoralis_Major-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.019864431923263936 -0.0034633148988479933 0.037520845209707838</location>
+								</PathPoint>
+								<PathPoint name="Pectoralis_Major-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.011560379056551931 0.0030764440097671509 0.025343863154190713</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.23294399678707123</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.017442166847937011</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.00043605413947131016</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.30000001192092896</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<DeGrooteFregly2016Muscle name="Pectoralis_Major_Posterior">
+					<!--Minimum allowed value for control signal. Used primarily when solving for control values.-->
+					<min_control>0</min_control>
+					<!--Maximum allowed value for control signal. Used primarily when solving for control values.-->
+					<max_control>1</max_control>
+					<!--The set of points defining the path of the actuator.-->
+					<GeometryPath name="geometrypath">
+						<!--The set of points defining the path-->
+						<PathPointSet>
+							<objects>
+								<PathPoint name="Pectoralis_Major_Posterior-P1">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.02177535033436738 -0.0068317803225529366 0.03182354053783925</location>
+								</PathPoint>
+								<PathPoint name="Pectoralis_Major_Posterior-P2">
+									<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame in which this path point is defined.).-->
+									<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+									<!--The fixed location of the path point expressed in its parent frame.-->
+									<location>0.012059787231290068 0.0022272322048531717 0.025639895744213468</location>
+								</PathPoint>
+							</objects>
+							<groups />
+						</PathPointSet>
+						<!--Default appearance attributes for this GeometryPath-->
+						<Appearance>
+							<!--The color, (red, green, blue), [0, 1], used to display the geometry. -->
+							<color>0.80000000000000004 0.10000000000000001 0.10000000000000001</color>
+						</Appearance>
+					</GeometryPath>
+					<!--Maximum isometric force that the fibers can generate-->
+					<max_isometric_force>0.17015500366687775</max_isometric_force>
+					<!--Optimal length of the muscle fibers-->
+					<optimal_fiber_length>0.015261895738127952</optimal_fiber_length>
+					<!--Resting length of the tendon-->
+					<tendon_slack_length>0.0010901354279960623</tendon_slack_length>
+					<!--Angle between tendon and fibers at optimal fiber length expressed in radians-->
+					<pennation_angle_at_optimal>0.40000000596046448</pennation_angle_at_optimal>
+					<!--Compute muscle dynamics ignoring tendon compliance. Tendon is assumed to be rigid.-->
+					<ignore_tendon_compliance>true</ignore_tendon_compliance>
+					<!--Compute muscle dynamics ignoring activation dynamics. Activation is equivalent to excitation.-->
+					<ignore_activation_dynamics>false</ignore_activation_dynamics>
+					<!--Make the passive fiber force 0. Default: false.-->
+					<ignore_passive_fiber_force>true</ignore_passive_fiber_force>
+				</DeGrooteFregly2016Muscle>
+				<CoordinateLimitForce name="elv_angle_CLF">
+					<!--Coordinate (name) to be limited.-->
+					<coordinate>elv_angle</coordinate>
+					<!--The upper limit of the coordinate range of motion (rotations in degrees).-->
+					<upper_limit>157.56340026855469</upper_limit>
+					<!--The lower limit of the coordinate range of motion (rotations in degrees).-->
+					<lower_limit>-28.647899627685547</lower_limit>
+					<!--Damping factor on the coordinate's speed applied only when limit is exceeded. For translational has units N/(m/s) and rotational has Nm/(degree/s)-->
+					<damping>0</damping>
+					<!--Transition region width in the units of the coordinate (rotations in degrees). Dictates the transition from zero to constant stiffness as coordinate exceeds its limit.-->
+					<transition>5</transition>
+				</CoordinateLimitForce>
+				<CoordinateLimitForce name="extension_angle_CLF">
+					<!--Coordinate (name) to be limited.-->
+					<coordinate>extension_angle</coordinate>
+					<!--The upper limit of the coordinate range of motion (rotations in degrees).-->
+					<upper_limit>126.05100250244141</upper_limit>
+					<!--The lower limit of the coordinate range of motion (rotations in degrees).-->
+					<lower_limit>-83.540855407714844</lower_limit>
+					<!--Damping factor on the coordinate's speed applied only when limit is exceeded. For translational has units N/(m/s) and rotational has Nm/(degree/s)-->
+					<damping>0</damping>
+					<!--Transition region width in the units of the coordinate (rotations in degrees). Dictates the transition from zero to constant stiffness as coordinate exceeds its limit.-->
+					<transition>5</transition>
+				</CoordinateLimitForce>
+				<CoordinateLimitForce name="rotation_angle_CLF">
+					<!--Coordinate (name) to be limited.-->
+					<coordinate>rotation_angle</coordinate>
+					<!--The upper limit of the coordinate range of motion (rotations in degrees).-->
+					<upper_limit>28.647899627685547</upper_limit>
+					<!--The lower limit of the coordinate range of motion (rotations in degrees).-->
+					<lower_limit>-57.295799255371094</lower_limit>
+					<!--Damping factor on the coordinate's speed applied only when limit is exceeded. For translational has units N/(m/s) and rotational has Nm/(degree/s)-->
+					<damping>0</damping>
+					<!--Transition region width in the units of the coordinate (rotations in degrees). Dictates the transition from zero to constant stiffness as coordinate exceeds its limit.-->
+					<transition>5</transition>
+				</CoordinateLimitForce>
+				<CoordinateLimitForce name="elbow_flex_CLF">
+					<!--Coordinate (name) to be limited.-->
+					<coordinate>elbow_flex</coordinate>
+					<!--The upper limit of the coordinate range of motion (rotations in degrees).-->
+					<upper_limit>114.59200286865234</upper_limit>
+					<!--The lower limit of the coordinate range of motion (rotations in degrees).-->
+					<lower_limit>-66.947021484375</lower_limit>
+					<!--Damping factor on the coordinate's speed applied only when limit is exceeded. For translational has units N/(m/s) and rotational has Nm/(degree/s)-->
+					<damping>0</damping>
+					<!--Transition region width in the units of the coordinate (rotations in degrees). Dictates the transition from zero to constant stiffness as coordinate exceeds its limit.-->
+					<transition>5</transition>
+				</CoordinateLimitForce>
+			</objects>
+			<groups />
+		</ForceSet>
+		<!--Markers in the model.-->
+		<MarkerSet name="markerset">
+			<objects>
+				<Marker name="handm">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
+					<socket_parent_frame>/bodyset/hand</socket_parent_frame>
+					<!--The fixed location of the station expressed in its parent frame.-->
+					<location>-0.0070825319704513057 0.0036401280007150728 0.017845507034390869</location>
+					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
+					<fixed>true</fixed>
+				</Marker>
+				<Marker name="elbow">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
+					<socket_parent_frame>/bodyset/humerus</socket_parent_frame>
+					<!--The fixed location of the station expressed in its parent frame.-->
+					<location>0.0067210502883606003 0.0017010090347279638 0.018109354509664426</location>
+				</Marker>
+				<Marker name="shoulderm">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
+					<socket_parent_frame>/bodyset/scapula</socket_parent_frame>
+					<!--The fixed location of the station expressed in its parent frame.-->
+					<location>0.017600663886305802 0.0047810853646650603 0.025541024394061897</location>
+					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
+					<fixed>false</fixed>
+				</Marker>
+				<Marker name="wristm">
+					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
+					<socket_parent_frame>/bodyset/radius</socket_parent_frame>
+					<!--The fixed location of the station expressed in its parent frame.-->
+					<location>-0.0028857202046544978 0.0025613586021120383 0.016075888548261041</location>
+					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
+					<fixed>false</fixed>
+				</Marker>
+			</objects>
+			<groups />
+		</MarkerSet>
+		<!--Visual preferences for this model.-->
+		<ModelVisualPreferences name="modelvisualpreferences">
+			<!--Model display preferences-->
+			<ModelDisplayHints>
+				<!--Flag to indicate whether or not to show frames, default to false.-->
+				<show_frames>true</show_frames>
+			</ModelDisplayHints>
+		</ModelVisualPreferences>
+	</Model>
+</OpenSimDocument>
