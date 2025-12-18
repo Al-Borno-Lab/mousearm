@@ -10,11 +10,10 @@ __email__ = "jesse.gilmer@cuanschutz.edu"
 __status__ = "preprinted"
 
 from . import helper_functions as helpers
-def run_simulation(folderNameSchema, nReachSets=6):
-    # user defined properties:
-
+import os
+def run_simulation(folderNameSchema="Test Reaches/reachset_", nReachSets=6):
     for i in range(nReachSets-1): #python is 0-indexed
-        reach_loc = folderNameSchema + str(i+1)
+        reach_loc = os.path.join(folderNameSchema, f"reachset_{i+1}")
         helpers.generate_scaled_model(reach_loc)
         helpers.generate_scaled_kinematics_rigid(reach_loc)
         helpers.generate_initial_pose(reach_loc)

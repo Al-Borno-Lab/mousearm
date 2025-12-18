@@ -36,11 +36,11 @@ def generate_scaled_model(reach_dir):
     """
     trackingFolder = reach_dir
 
-    trackingFile = "/kinematics_1.csv"
+    trackingFile = "kinematics_1.csv"
     kinKey = ["paw","wrist","shoulder","elbow"]
     markerKey = ["handm","wristm","shoulderm","elbow"]
 
-    inputData = genfromtxt(trackingFolder+trackingFile, delimiter=',')
+    inputData = genfromtxt(os.path.join(trackingFolder, trackingFile), delimiter=',')
     dataH = inputData.shape
     
     # write data to trc type file for use in osim
@@ -63,7 +63,7 @@ def generate_scaled_model(reach_dir):
     lineStr3 = lineStr3 + "\n"
     lineStr4 = "\n";
     
-    for file in glob.glob(trackingFolder+"/kinematics*"):
+    for file in glob.glob(os.path.join(trackingFolder, "kinematics*")):
         print(file)
         trackingFile = file
         kinKey = ["paw","wrist","shoulder","elbow"]
@@ -94,6 +94,7 @@ def generate_scaled_model(reach_dir):
     ST = osim.ScaleTool(setup_path)
     ST.getGenericModelMaker().setModelFileName(generic_model)
     ST.getGenericModelMaker().setMarkerSetFileName(marker_file)
+    ST.getModelScaler().setMarkerFileName(marker_file)
     ST.getModelScaler().setOutputModelFileName(output_path)
     
     ST.run()
