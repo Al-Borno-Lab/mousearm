@@ -17,11 +17,15 @@ jobs:
         with:
           activate-environment: mousearm-test
           python-version: "3.11"
-          architecture: x64 
+          architecture: x64
+          channels: opensim-org,conda-forge,defaults
+          channel-priority: true
 
       - name: Step 2: Install opensim
         run: |
-          conda install -c opensim-org opensim -y
+          conda install opensim -y
+          # Verify installation immediately
+          python -c "import opensim; print(opensim.__version__)"
 
       - name: Step 3: Install library with uv
         run: |
@@ -30,5 +34,5 @@ jobs:
 
       - name: Step 4: Run Demo
         run: |
-          cd mousearm/mousearm/Demo
+          cd $(find . -type d -name "Demo" | head -n 1)
           python Demo.py
