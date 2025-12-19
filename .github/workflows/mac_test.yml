@@ -18,21 +18,19 @@ jobs:
           activate-environment: mousearm-test
           python-version: "3.11"
           architecture: x64 
-          # This ensures the opensim-org channel is ready before the install step
+          # We add numpy here to ensure it's locked early
           channels: opensim-org,conda-forge,defaults
 
-      - name: Install opensim
+      - name: Install opensim and compatible numpy
         run: |
-          # We remove the "-c" here because it's already in the "channels" above
-          conda install opensim -y
+          # Explicitly force numpy 1.x during the conda install
+          conda install opensim "numpy<2" -y
 
       - name: Install library with uv
         run: |
           pip install uv
-          # This forces a compatible version of NumPy
-          uv pip install "numpy<2" 
-          uv pip install .
-
+          # Use --no-deps to prevent uv from trying to "upgrade" numpy again
+          uv pip install --no-deps .
       - name: Run Demo
         run: |
           # 1. Find the directory containing Demo.py
