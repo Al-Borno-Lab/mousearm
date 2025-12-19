@@ -34,7 +34,7 @@ Data/
 ├── reachset_1/
 │   └── kinematics_1.csv
 └── reachset_2/
-    └── kinematics_2.csv
+    └── kinematics_1.csv
 ```
 Then, in a separate anaconda terminal, cd into the parent directory of the Data folder.
 
