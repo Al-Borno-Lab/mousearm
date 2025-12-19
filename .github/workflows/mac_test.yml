@@ -18,8 +18,10 @@ jobs:
           activate-environment: mousearm-test
           python-version: "3.11"
           architecture: x64 
-          # We add numpy here to ensure it's locked early
-          channels: opensim-org,conda-forge,defaults
+          # Removing conda-forge if you don't strictly need it can speed things up
+          channels: opensim-org,defaults
+          # This helps with network issues
+          conda-options: "--retries 3"
 
       - name: Install opensim and compatible numpy
         run: |
