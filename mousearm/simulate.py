@@ -12,7 +12,7 @@ __status__ = "preprinted"
 from . import helper_functions as helpers
 import os
 def run_simulation(folderNameSchema="Test Reaches", nReachSets=6):
-    for i in range(nReachSets-1): #python is 0-indexed
+    for i in range(nReachSets): #python is 0-indexed
         reach_loc = os.path.join(folderNameSchema, f"reachset_{i+1}")
         helpers.generate_scaled_model(reach_loc)
         helpers.generate_scaled_kinematics_rigid(reach_loc)
