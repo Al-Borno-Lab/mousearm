@@ -1,3 +1,5 @@
+# Demo
+
 ## STEP 1: Create a new Conda environment
 In an Anaconda terminal, run `conda create -n "mousearm-test"` or any environment name.
 Activate the environment with `conda activate mousearm-test`.
@@ -17,6 +19,15 @@ pip install uv
 uv pip install .
 ```
 
+## STEP 4: 
+In a new anaconda terminal, cd to the parent directory of the cloned repo. Then, run:
+```
+cd mousearm/mousearm/Demo
+python Demo.py
+```
+
+# Sample Usage
+
 ## STEP 4: Place your data folder anywhere with the following format (any number of reachsets)
 ```
 Data/
@@ -27,7 +38,6 @@ Data/
 ```
 Then, in a separate anaconda terminal, cd into the parent directory of the Data folder.
 
-## STEP 5: Sample usage
 In a new python file in the same folder as the Data folder, enter:
 ```
 from mousearm.simulate import run_simulation
