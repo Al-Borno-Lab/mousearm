@@ -34,7 +34,7 @@ def generate_scaled_model(reach_dir):
     This generates "mouse_tracked.trc", which is the formal opensim requires for its scale tool. it will also generate a new model local to the kinematics.
     
     """
-    trackingFolder = reach_dir
+    trackingFolder = os.path.abspath(reach_dir)
 
     trackingFile = "kinematics_1.csv"
     kinKey = ["paw","wrist","shoulder","elbow"]
@@ -44,10 +44,10 @@ def generate_scaled_model(reach_dir):
     dataH = inputData.shape
     
     # write data to trc type file for use in osim
-    saveFilename = "mouse_tracked.trc"
+    saveFilename = os.path.join(trackingFolder, "mouse_tracked.trc")
     
     
-    headerString = "PathFileType\t4\t(X/Y/Z)\t" + saveFilename + "\n"
+    headerString = "PathFileType\t4\t(X/Y/Z)\t" + os.path.basename(saveFilename) + "\n"
     
     nFrames = 20;
     lineStr1 = "DataRate\tCameraRate\tNumFrames\tNumMarkers\tUnits\tOrigDataRate\tOrigDataStartFrame\tOrigNumFrames\n\t15.00\t15\t"+str(nFrames) +"\t4\tm\t15.00\t1\t"+str(dataH[0]) +"\n"
@@ -85,20 +85,22 @@ def generate_scaled_model(reach_dir):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     setup_path = os.path.join(script_dir, 'Scale_Setup.xml')
     generic_model = os.path.join(script_dir, 'model_toScale.osim')
-    marker_file = os.path.join(os.getcwd(), saveFilename)
+    marker_file = saveFilename
     geom_dir = os.path.join(script_dir, 'GeomJan01242023')
-    output_path = os.path.join(os.path.abspath(reach_dir), "scaled_mouse.osim")
+    #output_path = os.path.join(os.path.abspath(reach_dir), "scaled_mouse.osim")
+    output_path = os.path.abspath(os.path.join(trackingFolder, "scaled_mouse.osim"))
 
     osim.ModelVisualizer.addDirToGeometrySearchPaths(geom_dir)
 
     ST = osim.ScaleTool(setup_path)
+    ST.setPathToSubject("")
     ST.getGenericModelMaker().setModelFileName(generic_model)
     ST.getGenericModelMaker().setMarkerSetFileName(marker_file)
     ST.getModelScaler().setMarkerFileName(marker_file)
     ST.getModelScaler().setOutputModelFileName(output_path)
     
     ST.run()
-    
+
 def generate_scaled_kinematics_rigid(reach_dir):
     """
     This will enforce joint to joint scaling of kinematics using markers. This is necessary for tracking, as the model has rigid inter-joint distances.
@@ -106,7 +108,8 @@ def generate_scaled_kinematics_rigid(reach_dir):
     """
     
     # you need to run generate_scaled_model() before calling this.
-    model = getTorqueDrivenModel(reach_dir+'/scaled_mouse.osim')
+    model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+    model = getTorqueDrivenModel(model_path)
     state = model.initSystem()
     
     # get relevant markers in opensim model:
@@ -133,18 +136,18 @@ def generate_scaled_kinematics_rigid(reach_dir):
     el_paw_dist = np.sqrt(np.square(hx-elx) + np.square(hy-ely) + np.square(hz-elz))
     
     # itterate through kinematics and adjust kinematics
-    for file in glob.glob(reach_dir+"/kinematics*"):
+    for file in glob.glob(os.path.join(reach_dir, "kinematics*")):
         DATA = genfromtxt(file, delimiter=',')    
         DATA2 = DATA.copy() 
         
         # For data use only, write the "start time" and "end time" determined by dstart, dend user defined indexes at top of file
         DXF = DATA[dstart,0]
-        f = reach_dir+"/start_time_"+ os.path.basename(file);
+        f = os.path.join(reach_dir, "start_time_" + os.path.basename(file))
         with open(f, 'w') as f2:
             f2.write(str(DXF))
             
         DXF = DATA[dend,0]
-        f = reach_dir+"/end_time_"+ os.path.basename(file);
+        f = os.path.join(reach_dir, "end_time_" + os.path.basename(file))
         #f = f.replace('.csv','.txt')
         with open(f, 'w') as f2:
             f2.write(str(DXF))    
@@ -164,7 +167,7 @@ def generate_scaled_kinematics_rigid(reach_dir):
             X[np.isnan(X)] = np.interp(x, xp, fp)
             DATA[:,i] = X;
 
-        model = getTorqueDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model = getTorqueDrivenModel(model_path)
         #model = getTorqueDrivenModel('scaled_mouse_gen.osim')
 
         state = model.initSystem()
@@ -259,8 +262,7 @@ def generate_scaled_kinematics_rigid(reach_dir):
         DF = pd.DataFrame(DATA)
 
         # save the dataframe as a csv file
-        DF.to_csv(reach_dir+"/adjusted_"+ os.path.basename(file),index=False,header=False)
-
+        DF.to_csv(os.path.join(reach_dir, "adjusted_" + os.path.basename(file)),index=False,header=False)
 def cart2sph(x,y,z):
     """ 
     Helper for getting 3d angles from cartesians.
@@ -278,7 +280,7 @@ def generate_initial_pose(reach_dir):
     """
     
     # Itterate through the adjusted kinematic files that come from generate_scaled_kinematics_rigid(), then simulate them to get approximate starting joint angles.
-    for file in glob.glob(reach_dir+"/adjusted_kinematics*"):
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         # load kinematics data into a matrix
         DATA = genfromtxt(file, delimiter=',')    
         T = DATA[:,0]
@@ -286,7 +288,8 @@ def generate_initial_pose(reach_dir):
         elbow = DATA[:,10:13]
         
         # Optimize using the torque based model:
-        model = getTorqueDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+        model = getTorqueDrivenModel(model_path)
         
         # Get the references for the hand and elbow marker:
         handm = model.getMarkerSet().get("handm")
@@ -342,28 +345,29 @@ def generate_initial_pose(reach_dir):
         a = solutionUnsealed.exportToValuesTable()
         a.trim(0,0.000001)
         
-        osim.CSVFileAdapter().write(a,reach_dir+"/initpose_"+ os.path.basename(file))
-        DATA = genfromtxt(reach_dir+"/initpose_"+ os.path.basename(file), delimiter=',',skip_header=5)   
+        osim.CSVFileAdapter().write(a, os.path.join(reach_dir, "initpose_" + os.path.basename(file)))
+        DATA = genfromtxt(os.path.join(reach_dir, "initpose_" + os.path.basename(file)), delimiter=',',skip_header=5)   
         print(DATA)        
         DATA = DATA[1:]
 
         DF = pd.DataFrame(DATA)
         
         # save the dataframe as a csv file
-        DF.to_csv(reach_dir+"/initpose_"+ os.path.basename(file),index=False,header=False)
+        DF.to_csv(os.path.join(reach_dir, "initpose_" + os.path.basename(file)),index=False,header=False)
 
 def generate_final_pose(reach_dir):
     """
     This may or may not be a useful constraint for the full simulation.
     """
-    for file in glob.glob(reach_dir+"/adjusted_kinematics*"):
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         DATA = genfromtxt(file, delimiter=',')    
         T = DATA[:,0]
         paw = DATA[:,1:4]
         elbow = DATA[:,10:13]
         
         # First, optimize the torque bassed model:
-        model = getTorqueDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+        model = getTorqueDrivenModel(model_path)
         #model = getTorqueDrivenModel('scaled_mouse_gen.osim')
         
         # Get the references for the hand and elbow marker:
@@ -421,15 +425,15 @@ def generate_final_pose(reach_dir):
         a = solutionUnsealed.exportToValuesTable()
         a.trim(0,0.000001)
         
-        osim.CSVFileAdapter().write(a,reach_dir+"/endpose_"+ os.path.basename(file))
-        DATA = genfromtxt(reach_dir+"/endpose_"+ os.path.basename(file), delimiter=',',skip_header=5)   
+        osim.CSVFileAdapter().write(a, os.path.join(reach_dir, "endpose_" + os.path.basename(file)))
+        DATA = genfromtxt(os.path.join(reach_dir, "endpose_" + os.path.basename(file)), delimiter=',',skip_header=5)   
         print(DATA)        
         DATA = DATA[1:]
 
         DF = pd.DataFrame(DATA)
         
         # save the dataframe as a csv file
-        DF.to_csv(reach_dir+"/endpose_"+ os.path.basename(file),index=False,header=False)
+        DF.to_csv(os.path.join(reach_dir, "endpose_" + os.path.basename(file)),index=False,header=False)
 
 def addCoordinateActuator(model, coordName, optForce):
     coordSet = model.updCoordinateSet()
@@ -461,7 +465,7 @@ def getTorqueDrivenModel(model_filename):
 
 def synth_reach_torques(reach_dir):
     ii = 0
-    for file in glob.glob(reach_dir+"/adjusted_kinematics*"):
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         ii += 1
         DATA = genfromtxt(file, delimiter=',')    
         T = DATA[:,0]
@@ -469,7 +473,8 @@ def synth_reach_torques(reach_dir):
         elbow = DATA[:,10:13]
         
         # First, optimize the torque bassed model:
-        model = getTorqueDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+        model = getTorqueDrivenModel(model_path)
         #model = getTorqueDrivenModel('scaled_mouse_gen.osim')
         # Get the references for the hand and elbow marker:
         handm = model.getMarkerSet().get("handm")
@@ -482,7 +487,7 @@ def synth_reach_torques(reach_dir):
         finalTime = T[-1]
         problem.setTimeBounds(0, finalTime)
         
-        angles = genfromtxt(reach_dir+"/initpose_adjusted_kinematics_" + str(ii) + ".csv", delimiter=',')
+        angles = genfromtxt(os.path.join(reach_dir, "initpose_adjusted_kinematics_" + str(ii) + ".csv"), delimiter=',')
         
         # Set the initial conditions and limits for the model:
         # Note that some of these are commented out. If you ever decide to have a working wrist, then consider constraining their starting conditions as well.
@@ -533,12 +538,12 @@ def synth_reach_torques(reach_dir):
         print(elbow)
         predictSolution = study.solve()
         solutionUnsealed = predictSolution.unseal()
-        filename = reach_dir+"/torque_solution_"+ os.path.basename(file)
+        filename = os.path.join(reach_dir, "torque_solution_" + os.path.basename(file))
         filename = filename.replace('.csv','.sto')
         solutionUnsealed.write(filename)
         print(solutionUnsealed)
         states = predictSolution.exportToStatesTable()
-        print_kin(reach_dir+"/torque_kinematics_"+ os.path.basename(file),model,states)
+        print_kin(os.path.join(reach_dir, "torque_kinematics_" + os.path.basename(file)),model,states)
  
 def print_kin(path,model,states):
     """
@@ -559,12 +564,12 @@ def print_kin(path,model,states):
     osim.STOFileAdapterVec3.write(markerTrajectories,path)
 
 def synth_reach_inverse(reach_dir):
-    for file in glob.glob(reach_dir+"/adjusted_kinematics*"):
-        filename = reach_dir+"/torque_solution_"+ os.path.basename(file)
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
+        filename = os.path.join(reach_dir, "torque_solution_" + os.path.basename(file))
         filename = filename.replace('.csv','.sto')
         tableProcessor = osim.TableProcessor(filename)
         
-        #modelProcessor = osim.ModelProcessor(reach_dir+'/scaled_mouse.osim')
+        #modelProcessor = osim.ModelProcessor(os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim')))
         modelProcessor = osim.ModelProcessor('scaled_mouse_gen.osim')
 
         modelProcessor.append(osim.ModOpIgnoreTendonCompliance())
@@ -586,13 +591,13 @@ def synth_reach_inverse(reach_dir):
         inverseSolution = inverse.solve()
         solution = inverseSolution.getMocoSolution().unseal()
         inverseSolutionUnsealed = solution.unseal()
-        inverse_filename = reach_dir+"/inverse_Solution_"+ os.path.basename(file)
+        inverse_filename = os.path.join(reach_dir, "inverse_Solution_" + os.path.basename(file))
         inverse_filename = inverse_filename.replace('.csv','.sto')
         inverseSolutionUnsealed.write(inverse_filename)
         
 def synth_reach_mu(reach_dir):
     ii = 0;
-    for file in glob.glob(reach_dir+"/adjusted_kinematics*"):
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
 
         ii += 1
         DATA = genfromtxt(file, delimiter=',')    
@@ -601,7 +606,8 @@ def synth_reach_mu(reach_dir):
         elbow = DATA[:,10:13]
         
         # First, optimize the torque bassed model:
-        model = getMuscleDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+        model = getMuscleDrivenModel(model_path)
         #model = getMuscleDrivenModel('scaled_mouse_gen.osim')
         # Get the references for the hand and elbow marker:
         handm = model.getMarkerSet().get("handm")
@@ -614,8 +620,8 @@ def synth_reach_mu(reach_dir):
         finalTime = T[-1]
         problem.setTimeBounds(0, finalTime)
         
-        angles = DATA = genfromtxt(reach_dir+"/initpose_adjusted_kinematics_" + str(ii) + ".csv", delimiter=',')
-        endangles = DATA = genfromtxt(reach_dir+"/endpose_adjusted_kinematics_" + str(ii) + ".csv", delimiter=',')
+        angles = genfromtxt(os.path.join(reach_dir, "initpose_adjusted_kinematics_" + str(ii) + ".csv"), delimiter=',')
+        endangles = genfromtxt(os.path.join(reach_dir, "endpose_adjusted_kinematics_" + str(ii) + ".csv"), delimiter=',')
         
         # Set the initial conditions and limits for the model:
         problem.setStateInfo('/jointset/shoulder/elv_angle/value',        [],angles[0],endangles[0])
@@ -655,7 +661,7 @@ def synth_reach_mu(reach_dir):
         markerTracking.setMarkersReference(ref)
         
         problem.addGoal(markerTracking)   
-        problem.addGoal(osim.MocoControlGoal('myeffort',1))         
+        problem.addGoal(osim.MocoControlGoal('myeffort',1))          
 
         solver = study.initCasADiSolver()
         solver.set_num_mesh_intervals(len(T))
@@ -666,11 +672,11 @@ def synth_reach_mu(reach_dir):
         print(paw)
         predictSolution = study.solve()
         solutionUnsealed = predictSolution.unseal()
-        filename = reach_dir+"/muscle_solution_"+ os.path.basename(file)
+        filename = os.path.join(reach_dir, "muscle_solution_" + os.path.basename(file))
         filename = filename.replace('.csv','.sto')
         solutionUnsealed.write(filename)
         states = predictSolution.exportToStatesTable()
-        print_kin(reach_dir+"/muscle_kinematics_"+ os.path.basename(file),model,states)
+        print_kin(os.path.join(reach_dir, "muscle_kinematics_" + os.path.basename(file)),model,states)
 
 def getMuscleDrivenModel(model_filename):
     # Load the base model.
@@ -707,7 +713,7 @@ def getMuscleDrivenModel(model_filename):
     
 def synth_reach_mu_corrected(reach_dir,jj, basename = None):
     ii = 0;
-    for file in glob.glob(reach_dir+"/adjusted_kinematics_" + str(jj) + "*"):
+    for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics_" + str(jj) + "*")):
         print("="*30)
         print("Correcting reach....")
         print(file)
@@ -719,7 +725,8 @@ def synth_reach_mu_corrected(reach_dir,jj, basename = None):
         elbow = DATA[:,10:13]
         
         # First, optimize the torque bassed model:
-        model = getMuscleDrivenModel(reach_dir+'/scaled_mouse.osim')
+        model_path = os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim'))
+        model = getMuscleDrivenModel(model_path)
         #model = getMuscleDrivenModel('scaled_mouse_gen.osim')
         # Get the references for the hand and elbow marker:
         handm = model.getMarkerSet().get("handm")
@@ -732,8 +739,8 @@ def synth_reach_mu_corrected(reach_dir,jj, basename = None):
         finalTime = T[-1]
         problem.setTimeBounds(0, finalTime)
         
-        angles = DATA = genfromtxt(reach_dir+"/initpose_adjusted_kinematics_" + str(ii) + ".csv", delimiter=',')
-        endangles = DATA = genfromtxt(reach_dir+"/endpose_adjusted_kinematics_" + str(ii) + ".csv", delimiter=',')
+        angles = genfromtxt(os.path.join(reach_dir, "initpose_adjusted_kinematics_" + str(ii) + ".csv"), delimiter=',')
+        endangles = genfromtxt(os.path.join(reach_dir, "endpose_adjusted_kinematics_" + str(ii) + ".csv"), delimiter=',')
         
         # Set the initial conditions and limits for the model:
         problem.setStateInfo('/jointset/shoulder/elv_angle/value',        [],angles[0],endangles[0])
@@ -773,7 +780,7 @@ def synth_reach_mu_corrected(reach_dir,jj, basename = None):
         markerTracking.setMarkersReference(ref)
         
         problem.addGoal(markerTracking)   
-        problem.addGoal(osim.MocoControlGoal('myeffort',.1))         
+        problem.addGoal(osim.MocoControlGoal('myeffort',.1))          
 
         solver = study.initCasADiSolver()
         solver.set_num_mesh_intervals(len(T))
@@ -781,13 +788,13 @@ def synth_reach_mu_corrected(reach_dir,jj, basename = None):
         solver.set_optim_constraint_tolerance(1e-6)
         solver.set_optim_max_iterations(150)
         if basename:
-            solver.setGuessFile(reach_dir+basename)
+            solver.setGuessFile(os.path.join(reach_dir, basename))
         
         print(paw)
         predictSolution = study.solve()
         solutionUnsealed = predictSolution.unseal()
-        filename = reach_dir+"/muscle_solution_"+ os.path.basename(file)
+        filename = os.path.join(reach_dir, "muscle_solution_" + os.path.basename(file))
         filename = filename.replace('.csv','.sto')
         solutionUnsealed.write(filename)
         states = predictSolution.exportToStatesTable()
-        print_kin(reach_dir+"/muscle_kinematics_"+ os.path.basename(file),model,states)
+        print_kin(os.path.join(reach_dir, "muscle_kinematics_" + os.path.basename(file)),model,states)
