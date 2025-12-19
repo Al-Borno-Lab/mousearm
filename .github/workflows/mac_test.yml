@@ -18,18 +18,24 @@ jobs:
           activate-environment: mousearm-test
           python-version: "3.11"
           architecture: x64 
+          # This ensures the opensim-org channel is ready before the install step
+          channels: opensim-org,conda-forge,defaults
 
       - name: Install opensim
         run: |
-          conda install -c opensim-org opensim -y
+          # We remove the "-c" here because it's already in the "channels" above
+          conda install opensim -y
 
       - name: Install library with uv
         run: |
           pip install uv
+          # We use the --system flag because uv sometimes ignores conda envs
           uv pip install .
 
       - name: Run Demo
         run: |
-          pwd
-          cd mousearm/mousearm/Demo
+          # This finds the Demo.py wherever it is and runs it 
+          # (Fixes the mousearm/mousearm/Demo path confusion)
+          DEMO_PATH=$(find . -name "Demo.py" | head -n 1)
+          cd $(dirname "$DEMO_PATH")
           python Demo.py
