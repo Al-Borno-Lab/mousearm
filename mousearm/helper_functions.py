@@ -98,6 +98,8 @@ def generate_scaled_model(reach_dir):
     ST.getGenericModelMaker().setMarkerSetFileName(marker_file)
     ST.getModelScaler().setMarkerFileName(marker_file)
     ST.getModelScaler().setOutputModelFileName(output_path)
+    param_path = os.path.join(trackingFolder, "scaled_mouse_params.xml")
+    ST.getModelScaler().setOutputScaleFileName(param_path)
     
     ST.run()
 
