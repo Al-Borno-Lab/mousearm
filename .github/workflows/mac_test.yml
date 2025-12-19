@@ -18,29 +18,21 @@ jobs:
           activate-environment: mousearm-test
           python-version: "3.11"
           architecture: x64 
-          # Removing conda-forge if you don't strictly need it can speed things up
           channels: opensim-org,defaults
-          # This helps with network issues
           conda-options: "--retries 3"
 
-      - name: Install opensim and compatible numpy
+      - name: Install opensim and dependencies
         run: |
-          # Explicitly force numpy 1.x during the conda install
-          conda install opensim "numpy<2" -y
+          conda install opensim "numpy<2" matplotlib pandas scipy -y
 
       - name: Install library with uv
         run: |
           pip install uv
-          # Use --no-deps to prevent uv from trying to "upgrade" numpy again
           uv pip install --no-deps .
+
       - name: Run Demo
         run: |
-          # 1. Find the directory containing Demo.py
           DEMO_DIR=$(find . -type d -name "Demo" | head -n 1)
           echo "Found Demo directory at: $DEMO_DIR"
-          
-          # 2. Change into that directory
           cd "$DEMO_DIR"
-          
-          # 3. Run the script now that we are in the correct folder
           python Demo.py
