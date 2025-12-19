@@ -572,7 +572,7 @@ def synth_reach_inverse(reach_dir):
         tableProcessor = osim.TableProcessor(filename)
         
         #modelProcessor = osim.ModelProcessor(os.path.abspath(os.path.join(reach_dir, 'scaled_mouse.osim')))
-        modelProcessor = osim.ModelProcessor('scaled_mouse_gen.osim')
+        modelProcessor = osim.ModelProcessor('scaled_mouse.osim')
 
         modelProcessor.append(osim.ModOpIgnoreTendonCompliance())
         #modelProcessor.append(osim.ModOpIgnorePassiveFiberForcesDGF())

@@ -19,7 +19,7 @@ def run_simulation(folderNameSchema="Test Reaches", nReachSets=6):
         helpers.generate_initial_pose(reach_loc)
         helpers.generate_final_pose(reach_loc)
         helpers.synth_reach_torques(reach_loc)
-        helpers.synth_reach_inverse(reach_loc)
+        #helpers.synth_reach_inverse(reach_loc)
         helpers.synth_reach_mu(reach_loc)
     # After this, you'll have the synthetic kinematics and muscle excitations in the same folder as your initial emg and kinematics. This will take several hours to run.
 
