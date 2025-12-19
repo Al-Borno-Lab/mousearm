@@ -5,10 +5,8 @@ In an Anaconda terminal, run `conda create -n "mousearm-test python=3.11 -y"` or
 Activate the environment with `conda activate mousearm-test`.
 
 ## STEP 2: Install opensim via conda
-### Windows
-In the Anaconda terminal, run `conda install opensim-org::opensim`.
-### Linux
-In the Anaconda terminal, run `conda install -c opensim-org opensim`.
+**Windows/Linux**: `conda install -c opensim-org opensim`.
+**macOS (Apple Silicon)**: `CONDA_SUBDIR=osx-64 conda install -c opensim-org opensim`.
 
 ## STEP 3: Clone this git repo and install the library
 Run the following in the Anaconda terminal:
