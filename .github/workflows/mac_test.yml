@@ -30,5 +30,6 @@ jobs:
 
       - name: Run Demo
         run: |
+          pwd
           cd mousearm/mousearm/Demo
           python Demo.py
