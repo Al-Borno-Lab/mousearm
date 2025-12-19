@@ -13,10 +13,15 @@ In the Anaconda terminal, run `conda install -c opensim-org opensim`.
 ## STEP 3: Clone this git repo and install the library
 Run the following in the Anaconda terminal:
 ```
+# Using SSH:
+git clone git@github.com:Al-Borno-Lab/mousearm.git
+
+# OR using HTTPS:
 git clone https://github.com/Al-Borno-Lab/mousearm.git
+
 cd mousearm
 pip install uv
-uv pip install .
+uv pip install -e .
 ```
 
 ## STEP 4: 
