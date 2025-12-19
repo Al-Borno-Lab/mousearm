@@ -22,7 +22,7 @@ pip install uv
 uv pip install -e .
 ```
 
-## STEP 4: 
+## STEP 4: Run the demo
 In a new anaconda terminal, cd to the parent directory of the cloned repo. Then, run:
 ```
 cd mousearm/mousearm/Demo
