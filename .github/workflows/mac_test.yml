@@ -29,7 +29,8 @@ jobs:
       - name: Install library with uv
         run: |
           pip install uv
-          # We use the --system flag because uv sometimes ignores conda envs
+          # This forces a compatible version of NumPy
+          uv pip install "numpy<2" 
           uv pip install .
 
       - name: Run Demo
