@@ -44,7 +44,7 @@ Then, in a separate anaconda terminal, cd into the parent directory of the Data 
 In a new python file in the same folder as the Data folder, enter:
 ```
 from mousearm.simulate import run_simulation
-run_simulation("Data", nReachSets=2)
+run_simulation("Data", nReachSets=2) # Adjust nReachSets accordingly
 ```
 Then, run it using `python run ` from the parent directory of the Data folder.
 
@@ -67,26 +67,26 @@ RawData/
 
 The important output files are muscle_solution and the muscle_kinematics:
 * muscle_solution shows the solution that the model found for the movement. These can be visualized in OpenSim to observe the movement and predicted muscle actuations. 
-* muscle_kinematics shows the difference between the real movement and the movement predicted by the model
+* muscle_kinematics shows the difference between the captured movement and the movement predicted by the model
 
 These files can both be imported into a pandas dataframe for further analysis with the below python code. The directory should be structured like this:
 ```
 RawData/
 └── reachsets/
     ├── reachset_1/
-    │   ├── muscle_sol*
-    │   └── muscle_kinematics_*
+    │   ├── muscle_solution_adjusted_kinematics_1.sto
+    │   └── muscle_kinematics_adjusted_kinematics_1.csv
     ├── reachset_2/
-    │   ├── muscle_sol*
-    │   └── muscle_kinematics_*
+    │   ├── muscle_solution_adjusted_kinematics_1.sto
+    │   └── muscle_kinematics_adjusted_kinematics_1.csv
     └── ...
 ```
 ```
 import pandas as pd
 import glob
 import numpy as np
-base_dir = "../../RawData/reachsets/"
-save_dir = "../../Data/"
+base_dir = "../../RawData/reachsets/" # Adjust this path to yours
+save_dir = "../../Data/" # Adjust this path to yours
 mcolnames = ["time", "/jointset/shoulder/elv_angle/value", "/jointset/shoulder/extension_angle/value", "/jointset/shoulder/rotation_angle/value", "/jointset/humerus_ulna/elbow_flex/value", "/jointset/ulna_radius_pj/radius_rot/value", "/jointset/wrist/wrist_angle/value", "/jointset/shoulder/elv_angle/speed", "/jointset/shoulder/extension_angle/speed", "/jointset/shoulder/rotation_angle/speed", "/jointset/humerus_ulna/elbow_flex/speed", "/jointset/ulna_radius_pj/radius_rot/speed", "/jointset/wrist/wrist_angle/speed", "/forceset/Pectoralis_Clavicle_Head/activation", "/forceset/Biceps_Short_Head/activation", "/forceset/Biceps_Long_Head/activation", "/forceset/Deltoid_Medial/activation", "/forceset/Triceps_Lat_Head/activation", "/forceset/Triceps_Long_Head/activation", "/forceset/Brachialis_Proximal_Head/activation", "/forceset/Brachialis_Distal_Head/activation", "/forceset/Anconeus/activation", "/forceset/Deltoid_Posterior/activation", "/forceset/Anconeus_Short_Head/activation", "/forceset/Subscapularis_SuperiorHead/activation", "/forceset/Infraspinatus/activation", "/forceset/PronatorTeres/activation", "/forceset/FlexorCarpiRadialis/activation", "/forceset/Brachioradialis/activation", "/forceset/Triceps_Medial_Head/activation", "/forceset/Latissimus_Dorsi_Rostral/activation", "/forceset/Latissimus_Dorsi_Caudal/activation", "/forceset/Pectoralis_Major_Anterior/activation", "/forceset/Pectoralis_Major_Posterior/activation", "/forceset/Pectoralis_Clavicle_Head", "/forceset/Biceps_Short_Head", "/forceset/Biceps_Long_Head", "/forceset/Deltoid_Medial", "/forceset/Triceps_Lat_Head", "/forceset/Triceps_Long_Head", "/forceset/Brachialis_Proximal_Head", "/forceset/Brachialis_Distal_Head", "/forceset/Anconeus", "/forceset/Deltoid_Posterior", "/forceset/Anconeus_Short_Head", "/forceset/Subscapularis_SuperiorHead", "/forceset/Infraspinatus", "/forceset/PronatorTeres", "/forceset/FlexorCarpiRadialis", "/forceset/Brachioradialis", "/forceset/Triceps_Medial_Head", "/forceset/Latissimus_Dorsi_Rostral", "/forceset/Latissimus_Dorsi_Caudal", "/forceset/Pectoralis_Major_Anterior", "/forceset/Pectoralis_Major_Posterior"]
 kcolnames = ["time","paw_x","paw_y","paw_z","elbow_x","elbow_y","elbow_z"]
 
