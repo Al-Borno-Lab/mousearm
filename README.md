@@ -18,10 +18,10 @@ git clone git@github.com:Al-Borno-Lab/mousearm.git
 git clone https://github.com/Al-Borno-Lab/mousearm.git
 
 cd mousearm
-pip install uv
+pip install uv'
+
 uv pip install -e .
 ```
-
 ## STEP 4: Run the demo
 In a new anaconda terminal, cd to the parent directory of the cloned repo. Then, run:
 ```
@@ -47,3 +47,8 @@ from mousearm.simulate import run_simulation
 run_simulation("Data", nReachSets=2)
 ```
 Then, run it using `python run ` from the parent directory of the Data folder.
+
+# Data Formatting
+Process the motion capture data through [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut). The output file will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
+![Example input file](/images/image_2025-12-31_145620844.png)  
+
