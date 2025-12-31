@@ -11,7 +11,12 @@ __status__ = "preprinted"
 
 from . import helper_functions as helpers
 import os
-def run_simulation(folderNameSchema="Test Reaches", nReachSets=6):
+def run_simulation(folderNameSchema: str, nReachSets: int):
+    """
+    Args:
+        folderNameSchema (str, required): Name of the folder.
+        nReachSets (int, required): Number of reachset folders present.
+    """
     for i in range(nReachSets): #python is 0-indexed
         reach_loc = os.path.join(folderNameSchema, f"reachset_{i+1}")
         helpers.generate_scaled_model(reach_loc)

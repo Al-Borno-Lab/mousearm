@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Helper functions that "main_script.py" uses for running simulations.
+Helper functions that "simulate.py" uses for running simulations.
 """
 
 
@@ -23,16 +23,22 @@ dstart = 35
 dend = 85
 
 # Model and kinematic generation functions:
-def generate_scaled_model(reach_dir):
+def generate_scaled_model(reach_dir: str):
     """
     Uses a known set of kinematics to scale "model_toScale.osim" to the data.
+    
+    Args:
+        reach_dir (str, required): Directory containing kinematics CSV files and Scale_Setup.xml.
+    
+    Produces:
+        "mouse_tracked.trc": marker tracking file required for scaling.
+        "scaled_mouse.osim": scaled model specific to the dataset.
+        "scaled_mouse_params.xml": XML containing scaling parameters.
+    
     Requires:
-    a kinematics file, e.g. "kinematics_1.csv" below.
-    the kinematics should include a paw, wrist, elbow and shoulder set of markers. I will work with you to make it work with a subset, if necessary.
-    You also need Scale_Setup.xml.
-    
-    This generates "mouse_tracked.trc", which is the formal opensim requires for its scale tool. it will also generate a new model local to the kinematics.
-    
+        a kinematics file, e.g. "kinematics_1.csv" below.
+        the kinematics should include a paw, wrist, elbow and shoulder set of markers. I will work with you to make it work with a subset, if necessary.
+        Scale_Setup.xml.
     """
     trackingFolder = os.path.abspath(reach_dir)
 
@@ -105,8 +111,14 @@ def generate_scaled_model(reach_dir):
 
 def generate_scaled_kinematics_rigid(reach_dir):
     """
-    This will enforce joint to joint scaling of kinematics using markers. This is necessary for tracking, as the model has rigid inter-joint distances.
-    This produces an updated kinematics file.
+    Adjusts kinematics files to enforce rigid inter-joint distances based on the scaled model.
+
+    Args:
+        reach_dir (str): Directory containing scaled model and raw kinematics CSV files.
+
+    Produces:
+        "adjusted_kinematics_*.csv": kinematics corrected for rigid joint constraints.
+        "start_time_*" and "end_time_*": files marking ballistic phase clipping.
     """
     
     # you need to run generate_scaled_model() before calling this.
@@ -266,8 +278,16 @@ def generate_scaled_kinematics_rigid(reach_dir):
         # save the dataframe as a csv file
         DF.to_csv(os.path.join(reach_dir, "adjusted_" + os.path.basename(file)),index=False,header=False)
 def cart2sph(x,y,z):
-    """ 
-    Helper for getting 3d angles from cartesians.
+    """
+    Converts Cartesian coordinates to spherical coordinates.
+
+    Args:
+        x (float): X-coordinate.
+        y (float): Y-coordinate.
+        z (float): Z-coordinate.
+
+    Returns:
+        tuple: (r, elevation, azimuth) corresponding to radius, polar angle, and azimuthal angle.
     """
     XsqPlusYsq = x**2 + y**2
     r = m.sqrt(XsqPlusYsq + z**2)               # r
@@ -279,6 +299,14 @@ def cart2sph(x,y,z):
 def generate_initial_pose(reach_dir):
     """
     Constraining the joint angles to their solved initial values is hugely helpful for accuracy in the "full" simulation, so I recommend performing this step. You can skip end pose if you want to.
+    
+    Estimates initial joint angles for each reach using adjusted kinematics.
+
+    Args:
+        reach_dir (str): Directory containing "adjusted_kinematics_*.csv" files.
+
+    Produces:
+        - "initpose_*.csv": initial joint angles suitable for full simulation.
     """
     
     # Itterate through the adjusted kinematic files that come from generate_scaled_kinematics_rigid(), then simulate them to get approximate starting joint angles.
@@ -360,7 +388,16 @@ def generate_initial_pose(reach_dir):
 def generate_final_pose(reach_dir):
     """
     This may or may not be a useful constraint for the full simulation.
+    
+    Estimates final joint angles for each reach using adjusted kinematics.
+
+    Args:
+        reach_dir (str): Directory containing "adjusted_kinematics_*.csv" files.
+
+    Produces:
+        - "endpose_*.csv": final joint angles for simulation constraints.
     """
+    
     for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         DATA = genfromtxt(file, delimiter=',')    
         T = DATA[:,0]
@@ -438,6 +475,14 @@ def generate_final_pose(reach_dir):
         DF.to_csv(os.path.join(reach_dir, "endpose_" + os.path.basename(file)),index=False,header=False)
 
 def addCoordinateActuator(model, coordName, optForce):
+    """
+    Adds a torque actuator to a specified coordinate in the model.
+
+    Args:
+        model (osim.Model): OpenSim model object.
+        coordName (str): Name of the coordinate to actuate.
+        optForce (float): Optimal force for the actuator.
+    """
     coordSet = model.updCoordinateSet()
     actu = osim.CoordinateActuator()
     actu.setName('tau_' + coordName)
@@ -449,8 +494,15 @@ def addCoordinateActuator(model, coordName, optForce):
 
 def getTorqueDrivenModel(model_filename):
     """
-    This loads the biophysical model, destroys the muscles, then adds coordiante actuators at every joint. 
+    Loads a model, removes muscles, and adds coordinate actuators to all joints.
+
     This is a useful tool for examining joint angles and torques alone, but obviously won't provide any information about muscle activation.
+    
+    Args:
+        model_filename (str): Path to the OpenSim model file.
+
+    Returns:
+        osim.Model: Model configured for torque-driven simulations.
     """
     # Load the base model.
     model = osim.Model(model_filename)
@@ -466,6 +518,16 @@ def getTorqueDrivenModel(model_filename):
     return model
 
 def synth_reach_torques(reach_dir):
+    """
+    Generates torque-based simulation solutions for all adjusted kinematics.
+
+    Args:
+        reach_dir (str): Directory containing adjusted kinematics CSV files and scaled model.
+
+    Produces:
+        - "torque_solution_*.sto": optimal torque solution for each reach.
+        - "torque_kinematics_*.csv": corresponding kinematics extracted from simulation.
+    """
     ii = 0
     for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         ii += 1
@@ -549,7 +611,14 @@ def synth_reach_torques(reach_dir):
  
 def print_kin(path,model,states):
     """
-    This was better as an independent method. It just prints the kinematics that results from simulation to a file.
+    This was better as an independent method.
+    
+    Saves the kinematics resulting from a simulation to a CSV file.
+
+    Args:
+        path (str): Output CSV file path.
+        model (osim.Model): Simulation model.
+        states (osim.StatesTrajectory): States trajectory from simulation.
     """
     model.initSystem()
     statesTraj = osim.StatesTrajectory.createFromStatesTable(model, states)
@@ -566,6 +635,15 @@ def print_kin(path,model,states):
     osim.STOFileAdapterVec3.write(markerTrajectories,path)
 
 def synth_reach_inverse(reach_dir):
+    """
+    Performs inverse dynamics to compute joint torques from kinematics.
+
+    Args:
+        reach_dir (str): Directory containing adjusted kinematics CSV files and torque solutions.
+
+    Produces:
+        - "inverse_Solution_*.sto": inverse dynamics solutions for each reach.
+    """
     for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
         filename = os.path.join(reach_dir, "torque_solution_" + os.path.basename(file))
         filename = filename.replace('.csv','.sto')
@@ -598,6 +676,16 @@ def synth_reach_inverse(reach_dir):
         inverseSolutionUnsealed.write(inverse_filename)
         
 def synth_reach_mu(reach_dir):
+    """
+    Generates muscle-driven simulations using Moco for all reaches.
+
+    Args:
+        reach_dir (str): Directory containing adjusted kinematics CSV files and scaled model.
+
+    Produces:
+        - "muscle_solution_*.sto": optimal muscle activations and states.
+        - "muscle_kinematics_*.csv": kinematics extracted from muscle-driven simulation.
+    """
     ii = 0;
     for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics*")):
 
@@ -681,6 +769,15 @@ def synth_reach_mu(reach_dir):
         print_kin(os.path.join(reach_dir, "muscle_kinematics_" + os.path.basename(file)),model,states)
 
 def getMuscleDrivenModel(model_filename):
+    """
+    Loads a model and configures it for muscle-driven simulations.
+
+    Args:
+        model_filename (str): Path to the OpenSim model file.
+
+    Returns:
+        osim.Model: Muscle-driven model with modified muscles for Moco optimization.
+    """
     # Load the base model.
     model = osim.Model(model_filename)
     model.finalizeConnections()
@@ -714,6 +811,17 @@ def getMuscleDrivenModel(model_filename):
     return model
     
 def synth_reach_mu_corrected(reach_dir,jj, basename = None):
+    """
+    Corrects muscle-driven simulations for a specific reach index.
+
+    Args:
+        reach_dir (str): Directory containing adjusted kinematics and initial/final poses.
+        jj (int): Reach index to correct.
+        basename (str, optional): Initial guess file for the solver. Defaults to None.
+
+    Produces:
+        - Corrected "muscle_solution_*.sto" and corresponding kinematics CSV files.
+    """
     ii = 0;
     for file in glob.glob(os.path.join(reach_dir, "adjusted_kinematics_" + str(jj) + "*")):
         print("="*30)
