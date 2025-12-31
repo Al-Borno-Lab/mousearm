@@ -52,14 +52,24 @@ Then, run it using `python run ` from the parent directory of the Data folder.
 Process the motion capture data through [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut). The output file will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
 ![Example input file](/images/image_2025-12-31_145620844.png)  
 
-# Output File Processing
-The generated .sto files can be visualized in OpenSim to observe the movement and predicted muscle actuations. 
+After formatting, the data folder should be formatted like this:
+```
+RawData/
+└── reachsets/
+    ├── reachset_1/
+    │   └── kinematics_1.csv
+    ├── reachset_2/
+    │   └── kinematics_1.csv
+    └── ...
+```
 
-The other important output files are muscle_solution and the muscle_kinematics:
-* muscle_solution shows the solution that the model found for the movement
+# Output File Processing
+
+The important output files are muscle_solution and the muscle_kinematics:
+* muscle_solution shows the solution that the model found for the movement. These can be visualized in OpenSim to observe the movement and predicted muscle actuations. 
 * muscle_kinematics shows the difference between the real movement and the movement predicted by the model
 
-These files can be imported into a pandas dataframe with the below code. The directory is assumed to be structured like this:
+These files can both be imported into a pandas dataframe for further analysis with the below python code. The directory should be structured like this:
 ```
 RawData/
 └── reachsets/
