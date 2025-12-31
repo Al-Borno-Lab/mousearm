@@ -52,3 +52,5 @@ Then, run it using `python run ` from the parent directory of the Data folder.
 Process the motion capture data through [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut). The output file will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
 ![Example input file](/images/image_2025-12-31_145620844.png)  
 
+# Output File Processing
+The most important output files are the muscle_solution and the muscle_kinematics. However, they need to be formatted before they are usable. The generated .sto files can be visualized in OpenSim to observe the movement and predicted muscle actuations. The muscle_solution shows the solution that the model found for the movement, and the muscle_kinematics file shows the difference between the real movement and the movement predicted by the model. 
