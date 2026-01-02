@@ -20,4 +20,6 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 mousearm = ["model_toScale.osim", "*.xml", "*.osim", "*.trc", "GeomJan01242023/*"]
+
+[tool.setuptools.packages.find]
 include = ["mousearm*"]
