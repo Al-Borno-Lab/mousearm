@@ -1,5 +1,8 @@
 # Demo
 
+## STEP 1: Install Anaconda
+Download the executable from [this link](https://www.anaconda.com/download) then follow the instructions there to install Anaconda.
+
 ## STEP 1: Create a new Conda environment
 In an Anaconda terminal, run `conda create -n "mousearm-test python=3.11 -y"` or any environment name.  
 Activate the environment with `conda activate mousearm-test`.
@@ -8,7 +11,11 @@ Activate the environment with `conda activate mousearm-test`.
 **Windows/Linux**: `conda install -c opensim-org opensim`.  
 **macOS (Apple Silicon)**: `CONDA_SUBDIR=osx-64 conda install -c opensim-org opensim`.
 
-## STEP 3: Clone this git repo and install the library
+## STEP 3: Go to your Documents folder
+**Windows**: `cd %USERPROFILE%\Documents`.
+**Linux/macOS**: `cd ~/Documents`.
+
+## STEP 4: Clone this git repo and install the library
 Run the following in the Anaconda terminal:
 ```
 # Using SSH:
@@ -22,16 +29,16 @@ pip install uv'
 
 uv pip install -e .
 ```
-## STEP 4: Run the demo
-In a new anaconda terminal, cd to the parent directory of the cloned repo. Then, run:
+## STEP 5: Run the demo
+To do this, run:
 ```
-cd mousearm/mousearm/Demo
+cd mousearm/Demo
 python demo.py
 ```
 
 # Sample Usage
 
-## STEP 4: Place your data folder anywhere with the following format (any number of reachsets)
+## STEP 5: Place your data folder anywhere with the following format (any number of reachsets)
 ```
 Data/
 ├── reachset_1/
