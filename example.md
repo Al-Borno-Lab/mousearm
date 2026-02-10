@@ -39,4 +39,3 @@ Go to the next tab, the "Evaluate network" tab (6th tab). I recommend checking "
 Now, you can move on to the "Analyze videos" tab (7th tab). The video should already be selected, but if it is not, you can re-add it. 
 
 :warning: **Make sure to check the "Save result(s) as csv" box**. Now you can click "Analyze Videos"
-
