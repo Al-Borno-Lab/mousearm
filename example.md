@@ -86,7 +86,13 @@ pip install uv'
 uv pip install -e .
 ```
 
-## STEP 5: Place your data folder anywhere with the following format (any number of reachsets)
+## STEP 5: Data Formatting
+The output file from deeplabcut will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
+![Example input file](/images/image_2025-12-31_145620844.png)  
+
+After formatting, the data folder should be formatted like this:
+
+## STEP 6: Place your data folder anywhere with the following format (any number of reachsets)
 ```
 Data/
 ├── reachset_1/
@@ -94,29 +100,14 @@ Data/
 └── reachset_2/
     └── kinematics_1.csv
 ```
-Then, in a separate anaconda terminal, cd into the parent directory of the Data folder.
+Then, right click the "Data" folder, and click "Copy as path." in a separate anaconda terminal, type `cd ` then right-click and paste the path in and hit enter. Then type `cd ..` and hit enter.
 
 In a new python file in the same folder as the Data folder, enter:
 ```
 from mousearm.simulate import run_simulation
 run_simulation("Data", nReachSets=2) # Adjust nReachSets accordingly
 ```
-Then, run it using `python run ` from the parent directory of the Data folder.
-
-# Data Formatting
-Process the motion capture data through [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut). The output file will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
-![Example input file](/images/image_2025-12-31_145620844.png)  
-
-After formatting, the data folder should be formatted like this:
-```
-RawData/
-└── reachsets/
-    ├── reachset_1/
-    │   └── kinematics_1.csv
-    ├── reachset_2/
-    │   └── kinematics_1.csv
-    └── ...
-```
+Then, run it using `python run [name of file]` from the parent directory of the Data folder.
 
 # Output File Processing
 
