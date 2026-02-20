@@ -1,3 +1,6 @@
+# Usage Instructions
+Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md).
+
 # Demo
 
 ## STEP 1: Install Anaconda
