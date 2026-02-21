@@ -6,7 +6,7 @@ If you use this computational tool for your research, please cite:
 Gilmer, Jesse I., Susan K. Coltman, Geraldine Cuenu, John R. Hutchinson, Daniel Huber, Abigail L. Person, and Mazen Al Borno. "A novel biomechanical model of the proximal mouse forelimb predicts muscle activity in optimal control simulations of reaching movements." _Journal of neurophysiology_ 133, no. 4 (2025): 1266-1278.
 
 # Usage Instructions
-Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md).
+Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md). Or, start with the demo below.
 
 # Demo
 
