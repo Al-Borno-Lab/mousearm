@@ -3,11 +3,10 @@ This computational tool uses optimal control to predict muscle activity of mouse
 
 If you use this computational tool for your research, please cite:
 
-Gilmer, Jesse I., Susan K. Coltman, Geraldine Cuenu, John R. Hutchinson, Daniel Huber, Abigail L. Person, and Mazen Al Borno. "A novel biomechanical model of the proximal mouse forelimb predicts muscle activity in optimal control simulations of reaching movements." _Journal of neurophysiology_ 133, no. 4 (2025): 1266-1278.
+Gilmer, Jesse I., Susan K. Coltman, Geraldine Cuenu, John R. Hutchinson, Daniel Huber, Abigail L. Person, and Mazen Al Borno. "A novel biomechanical model of the proximal mouse forelimb predicts muscle activity in optimal control simulations of reaching movements." _Journal of neurophysiology_ 133, no. 4 (2025): 1266-1278.<br><br>
 
 # Usage Instructions
-Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md). Or, start with the demo below.
-
+Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md). Or, start with the demo below.<br><br>
 
 # Demo
 
@@ -46,6 +45,7 @@ To do this, run:
 cd mousearm/Demo
 python demo.py
 ```
+<br>
 
 # Sample Usage
 
@@ -65,6 +65,7 @@ from mousearm.simulate import run_simulation
 run_simulation("Data", nReachSets=2) # Adjust nReachSets accordingly
 ```
 Then, run it using `python run ` from the parent directory of the Data folder.
+<br><br>
 
 # Data Formatting
 Process the motion capture data through [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut). The output file will have more data than necessary, so delete everything except time, paw (x,y,z), wrist (x,y,z), shoulder (x,y,z), elbow (x,y,z). At the end, the csv file should look like the following:  
@@ -80,6 +81,7 @@ RawData/
     │   └── kinematics_1.csv
     └── ...
 ```
+<br>
 
 # Output File Processing
 
