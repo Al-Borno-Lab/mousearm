@@ -1,3 +1,10 @@
+# About This Tool
+This computational tool uses optimal control to predict muscle activity of mouse forelimb movements. Users should provide a video of a mouse forelimb movement with annotations on the paw, elbow, and shoulder. A physics simulation with a musculoskeletal model of the mouse forelimb will be performed to reproduce the annotated kinematics and will estimate biomechanical features (including joint positions/velocities, torques, muscle excitations, fiber lengths/velocities). The computational tool outputs a .mot file, which contains the activity of more than 20 forelimb muscles by time.
+
+If you use this computational tool for your research, please cite:
+
+Gilmer, Jesse I., Susan K. Coltman, Geraldine Cuenu, John R. Hutchinson, Daniel Huber, Abigail L. Person, and Mazen Al Borno. "A novel biomechanical model of the proximal mouse forelimb predicts muscle activity in optimal control simulations of reaching movements." _Journal of neurophysiology_ 133, no. 4 (2025): 1266-1278.
+
 # Usage Instructions
 Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mousearm/blob/main/example.md).
 
@@ -6,19 +13,19 @@ Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mous
 ## STEP 1: Install Anaconda
 Download the executable from [this link](https://www.anaconda.com/download) then follow the instructions there to install Anaconda.
 
-## STEP 1: Create a new Conda environment
+## STEP 2: Create a new Conda environment
 In an Anaconda terminal, run `conda create -n "mousearm-test python=3.11 -y"` or any environment name.  
 Activate the environment with `conda activate mousearm-test`.
 
-## STEP 2: Install opensim via conda
+## STEP 3: Install opensim via conda
 **Windows/Linux**: `conda install -c opensim-org opensim`.  
 **macOS (Apple Silicon)**: `CONDA_SUBDIR=osx-64 conda install -c opensim-org opensim`.
 
-## STEP 3: Go to your Documents folder
+## STEP 4: Go to your Documents folder
 **Windows**: `cd %USERPROFILE%\Documents`.
 **Linux/macOS**: `cd ~/Documents`.
 
-## STEP 4: Clone this git repo and install the library
+## STEP 5: Clone this git repo and install the library
 Run the following in the Anaconda terminal:
 ```
 # Using SSH:
@@ -32,7 +39,7 @@ pip install uv'
 
 uv pip install -e .
 ```
-## STEP 5: Run the demo
+## STEP 6: Run the demo
 To do this, run:
 ```
 cd mousearm/Demo
@@ -41,7 +48,7 @@ python demo.py
 
 # Sample Usage
 
-## STEP 5: Place your data folder anywhere with the following format (any number of reachsets)
+## Place your data folder anywhere with the following format (any number of reachsets)
 ```
 Data/
 ├── reachset_1/
