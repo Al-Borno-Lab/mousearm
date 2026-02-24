@@ -14,7 +14,7 @@ Get started using the [example walkthrough](https://github.com/Al-Borno-Lab/mous
 Download the executable from [this link](https://www.anaconda.com/download) then follow the instructions there to install Anaconda.
 
 ## STEP 2: Create a new Conda environment
-In an Anaconda terminal, run `conda create -n "mousearm-test python=3.11 -y"` or any environment name.  
+In an Anaconda terminal, run `conda create -n "mousearm-test" python=3.11 -y` or any environment name.  
 Activate the environment with `conda activate mousearm-test`.
 
 ## STEP 3: Install opensim via conda
