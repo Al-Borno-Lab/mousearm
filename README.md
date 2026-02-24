@@ -35,7 +35,7 @@ git clone git@github.com:Al-Borno-Lab/mousearm.git
 git clone https://github.com/Al-Borno-Lab/mousearm.git
 
 cd mousearm
-pip install uv'
+pip install uv
 
 uv pip install -e .
 ```
