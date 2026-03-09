@@ -18,8 +18,8 @@ In an Anaconda terminal, run `conda create -n "mousearm-test" python=3.11 -y` or
 Activate the environment with `conda activate mousearm-test`.
 
 ## STEP 3: Install opensim via conda
-**Windows/Linux**: `conda install -c opensim-org opensim`.  
-**macOS (Apple Silicon)**: `CONDA_SUBDIR=osx-64 conda install -c opensim-org opensim`.
+**Windows/Linux**: `conda install -c opensim-org opensim=4.4`.  
+**macOS (Apple Silicon)**: `CONDA_SUBDIR=osx-64 conda install -c opensim-org opensim=4.4`.
 
 ## STEP 4: Go to your Documents folder
 **Windows**: `cd %USERPROFILE%\Documents`.
