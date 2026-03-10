@@ -119,4 +119,7 @@ plt.ylabel("Biceps Activation")
 plt.show()
 ```
 
-If you would like to get data on the muscle fiber lengths, you can do so using the `getMuscleLengths.py` script from this github repo. Those will be outputted to additional `.sto` files that you can plot and analyze with python code like above.
+If you would like to get data on the muscle fiber lengths, you can do so using the `getMuscleLengths.py` script from this github repo. Those will be outputted to additional `.sto` files that you can plot and analyze with python code like above, except using these column names:
+```
+mcolnames = ["time", "Pectoralis_Clavicle_Head", "Biceps_Short_Head", "Biceps_Long_Head", "Deltoid_Medial", "Triceps_Lat_Head", "Triceps_Long_Head", "Brachialis_Proximal_Head", "Brachialis_Distal_Head", "Anconeus", "Deltoid_Posterior", "Anconeus_Short_Head", "Subscapularis_SuperiorHead", "Infraspinatus", "PronatorTeres", "FlexorCarpiRadialis", "Brachioradialis", "Triceps_Medial_Head", "Latissimus_Dorsi_Rostral", "Latissimus_Dorsi_Caudal", "Pectoralis_Major_Anterior", "Pectoralis_Major_Posterior"]
+```
