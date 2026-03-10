@@ -1,5 +1,5 @@
 # About This Tool
-This computational tool uses optimal control to predict muscle activity of mouse forelimb movements. Users should provide a video of a mouse forelimb movement with annotations on the paw, elbow, and shoulder. A physics simulation with a musculoskeletal model of the mouse forelimb will be performed to reproduce the annotated kinematics and will estimate biomechanical features (including joint positions/velocities, torques, muscle excitations, fiber lengths/velocities). The computational tool outputs a .mot file, which contains the activity of more than 20 forelimb muscles by time.
+This computational tool uses optimal control to predict muscle activity of mouse forelimb movements. Users should provide a video of a mouse forelimb movement with annotations on the paw, elbow, and shoulder. A physics simulation with a musculoskeletal model of the mouse forelimb will be performed to reproduce the annotated kinematics and will estimate biomechanical features (including joint positions/velocities, torques, muscle excitations, fiber lengths/velocities). The computational tool outputs a `.mot` file, which contains the activity of more than 20 forelimb muscles by time.
 
 If you use this computational tool for your research, please cite:
 
@@ -101,28 +101,21 @@ RawData/
     │   └── muscle_kinematics_adjusted_kinematics_1.csv
     └── ...
 ```
+
+You can get your path by right clicking on the `.sto` file and clicking "Copy as Path." This will copy the path to you clipboard and you can paste it in with Ctrl+V. The code will look like this:
 ```
 import pandas as pd
-import glob
-import numpy as np
-base_dir = "../../RawData/reachsets/" # Adjust this path to yours
-save_dir = "../../Data/" # Adjust this path to yours
-mcolnames = ["time", "/jointset/shoulder/elv_angle/value", "/jointset/shoulder/extension_angle/value", "/jointset/shoulder/rotation_angle/value", "/jointset/humerus_ulna/elbow_flex/value", "/jointset/ulna_radius_pj/radius_rot/value", "/jointset/wrist/wrist_angle/value", "/jointset/shoulder/elv_angle/speed", "/jointset/shoulder/extension_angle/speed", "/jointset/shoulder/rotation_angle/speed", "/jointset/humerus_ulna/elbow_flex/speed", "/jointset/ulna_radius_pj/radius_rot/speed", "/jointset/wrist/wrist_angle/speed", "/forceset/Pectoralis_Clavicle_Head/activation", "/forceset/Biceps_Short_Head/activation", "/forceset/Biceps_Long_Head/activation", "/forceset/Deltoid_Medial/activation", "/forceset/Triceps_Lat_Head/activation", "/forceset/Triceps_Long_Head/activation", "/forceset/Brachialis_Proximal_Head/activation", "/forceset/Brachialis_Distal_Head/activation", "/forceset/Anconeus/activation", "/forceset/Deltoid_Posterior/activation", "/forceset/Anconeus_Short_Head/activation", "/forceset/Subscapularis_SuperiorHead/activation", "/forceset/Infraspinatus/activation", "/forceset/PronatorTeres/activation", "/forceset/FlexorCarpiRadialis/activation", "/forceset/Brachioradialis/activation", "/forceset/Triceps_Medial_Head/activation", "/forceset/Latissimus_Dorsi_Rostral/activation", "/forceset/Latissimus_Dorsi_Caudal/activation", "/forceset/Pectoralis_Major_Anterior/activation", "/forceset/Pectoralis_Major_Posterior/activation", "/forceset/Pectoralis_Clavicle_Head", "/forceset/Biceps_Short_Head", "/forceset/Biceps_Long_Head", "/forceset/Deltoid_Medial", "/forceset/Triceps_Lat_Head", "/forceset/Triceps_Long_Head", "/forceset/Brachialis_Proximal_Head", "/forceset/Brachialis_Distal_Head", "/forceset/Anconeus", "/forceset/Deltoid_Posterior", "/forceset/Anconeus_Short_Head", "/forceset/Subscapularis_SuperiorHead", "/forceset/Infraspinatus", "/forceset/PronatorTeres", "/forceset/FlexorCarpiRadialis", "/forceset/Brachioradialis", "/forceset/Triceps_Medial_Head", "/forceset/Latissimus_Dorsi_Rostral", "/forceset/Latissimus_Dorsi_Caudal", "/forceset/Pectoralis_Major_Anterior", "/forceset/Pectoralis_Major_Posterior"]
-kcolnames = ["time","paw_x","paw_y","paw_z","elbow_x","elbow_y","elbow_z"]
-
-def getMu(which_sets):
-    mu = pd.DataFrame();
-    for set in which_sets:
-        for file in glob.glob(base_dir+"reachset_"+str(set)+"/muscle_sol*"):
-            tdf = pd.read_csv(file, sep= r'\t',engine='python', header=18, names=mcolnames, index_col=None)
-            mu = pd.concat([mu,tdf], ignore_index=True)
-    return mu
-
-def getKin(which_sets):
-    kin = pd.DataFrame();
-    for set in which_sets:
-        for file in glob.glob(base_dir+"reachset_"+str(set)+"/muscle_kinematics_*"):
-            tdf = pd.read_csv(file, sep= r',|\t',engine='python', header=4, names=kcolnames,index_col=None)
-            kin = pd.concat([kin,tdf],  ignore_index=True)
-    return kin
+file = r".\Test Reaches\reachset_1\muscle_solution_adjusted_kinematics_2.sto" # REPLACE WITH YOUR PATH
+muscleSolution = pd.read_csv(file, sep= r'\t',engine='python', header=18, names=mcolnames, index_col=None)
 ```
+
+After this, you can run `print(muscleSolution.columns)` to get a list of your columns. Then, if you would like to plot any of them against time, you can do so like this (this will plot the biceps activations):
+```
+import matplotlib.pyplot as plt
+plt.plot(muscleSolution["time"], muscleSolution["/forceset/Biceps_Long_Head/activation"])
+plt.xlabel("Time (s)")
+plt.ylabel("Biceps Activation")
+plt.show()
+```
+
+If you would like to get data on the muscle fiber lengths, you can do so using the `getMuscleLengths.py` script from this github repo. Those will be outputted to additional `.sto` files that you can plot and analyze with python code like above.
